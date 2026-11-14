@@ -1,0 +1,21 @@
+{
+  "name": "projectverse",
+  "version": "1.0.0",
+  "description": "PROJECTVERSE - Final Year Student Project Management & Lead Generation Platform",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=22.5.0"
+  },
+  "keywords": [
+    "student-projects",
+    "final-year-projects",
+    "lead-generation",
+    "education",
+    "saas"
+  ],
+  "author": "Saikiran Gorle",
+  "license": "MIT"
+}

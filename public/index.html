@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PROJECTVERSE – Your Final Year Project Partner | Mini, Major & Research Projects</title>
+  <meta name="description" content="Discover, explore and complete your final year projects with PROJECTVERSE. Complete Project Support, PPT & Report, Working Demos, and 100% Viva Preparation for B.Tech, M.Tech, MCA, BCA, B.Sc & M.Sc students.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220%22%3E<text y=%2226%22 font-size=%2226%22>🚀</text></svg>">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              navy: '#0b1120',
+              dark: '#030712',
+              card: 'rgba(15, 23, 42, 0.75)',
+              electric: '#00f0ff',
+              cyan: '#38bdf8',
+              purple: '#a855f7',
+              gold: '#f59e0b',
+              goldHover: '#d97706',
+              green: '#10b981'
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            heading: ['"Space Grotesk"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <!-- Chart.js for Admin Analytics -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="bg-[#030712] text-slate-100 min-h-screen flex flex-col antialiased selection:bg-cyan-500 selection:text-black">
+
+  <!-- Background Ambient Glow & Particles -->
+  <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+    <div class="absolute -top-40 -left-40 w-96 h-96 bg-cyan-500/10 rounded-full blur-[128px]"></div>
+    <div class="absolute top-1/3 -right-40 w-96 h-96 bg-purple-600/10 rounded-full blur-[128px]"></div>
+    <div class="absolute -bottom-40 left-1/3 w-96 h-96 bg-amber-500/10 rounded-full blur-[128px]"></div>
+    <div class="absolute inset-0 bg-cyber-grid opacity-30"></div>
+    <canvas id="ambient-canvas" class="w-full h-full opacity-40"></canvas>
+  </div>
+
+  <!-- Announcement Bar -->
+  <div class="relative z-50 bg-gradient-to-r from-purple-900/80 via-indigo-900/80 to-blue-900/80 border-b border-indigo-500/20 py-2 px-4 text-xs font-medium text-center text-slate-200">
+    <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
+      <div class="flex items-center gap-2 mx-auto">
+        <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-amber-400 text-slate-950 uppercase tracking-wider animate-pulse">Admissions Open</span>
+        <span class="hidden sm:inline">Final Year Batch 2025-2026! Mini, Major & Research Projects with 100% Viva Guidance</span>
+        <span class="sm:hidden">Final Year Projects with 100% Viva Support!</span>
+      </div>
+      <div class="hidden md:flex items-center gap-4 text-xs">
+        <a href="tel:7989010109" class="hover:text-cyan-400 transition flex items-center gap-1">
+          <i data-lucide="phone" class="w-3 h-3 text-cyan-400"></i> 7989010109
+        </a>
+        <span class="text-slate-600">|</span>
+        <a href="mailto:saikirangorle909@gmail.com" class="hover:text-cyan-400 transition flex items-center gap-1">
+          <i data-lucide="mail" class="w-3 h-3 text-amber-400"></i> saikirangorle909@gmail.com
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation Bar -->
+  <header class="sticky top-0 z-40 w-full backdrop-blur-xl bg-[#030712]/80 border-b border-slate-800/80 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Logo -->
+      <a href="#home" class="flex items-center gap-3 group" onclick="app.navigate('home')">
+        <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-cyan-500 via-indigo-500 to-purple-600 p-[1px] shadow-lg shadow-cyan-500/20 group-hover:shadow-cyan-500/40 transition-all">
+          <div class="w-full h-full bg-[#030712] rounded-[11px] flex items-center justify-center">
+            <i data-lucide="sparkles" class="w-6 h-6 text-cyan-400 group-hover:scale-110 transition-transform"></i>
+          </div>
+        </div>
+        <div class="flex flex-col">
+          <div class="flex items-center gap-1">
+            <span class="text-2xl font-black tracking-tight font-heading text-gradient-cyan">PROJECT<span class="text-white">VERSE</span></span>
+            <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
+          </div>
+          <span class="text-[10px] tracking-wider uppercase font-semibold text-amber-400">Your Final Year Partner</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav class="hidden lg:flex items-center gap-1 text-sm font-medium text-slate-300">
+        <a href="#home" onclick="app.navigate('home')" class="nav-link px-3 py-2 rounded-lg hover:text-cyan-400 hover:bg-slate-800/50 transition">Home</a>
+        <a href="#projects" onclick="app.navigate('projects')" class="nav-link px-3 py-2 rounded-lg hover:text-cyan-400 hover:bg-slate-800/50 transition">Projects</a>
+        <a href="#domains" onclick="app.navigate('domains')" class="nav-link px-3 py-2 rounded-lg hover:text-cyan-400 hover:bg-slate-800/50 transition">Domains</a>
+        <a href="#services" onclick="app.navigate('services')" class="nav-link px-3 py-2 rounded-lg hover:text-cyan-400 hover:bg-slate-800/50 transition">Services</a>
+        <a href="#poster" onclick="app.openPosterModal()" class="nav-link px-3 py-2 rounded-lg text-amber-400 hover:text-amber-300 hover:bg-amber-500/10 transition flex items-center gap-1">
+          <i data-lucide="award" class="w-4 h-4"></i> Official Poster
+        </a>
+        <a href="#about" onclick="app.navigate('about')" class="nav-link px-3 py-2 rounded-lg hover:text-cyan-400 hover:bg-slate-800/50 transition">About Us</a>
+        <a href="#contact" onclick="app.navigate('contact')" class="nav-link px-3 py-2 rounded-lg hover:text-cyan-400 hover:bg-slate-800/50 transition">Contact</a>
+      </nav>
+
+      <!-- Right Header Actions -->
+      <div class="hidden sm:flex items-center gap-3">
+        
+        <!-- WhatsApp Quick Link -->
+        <a href="https://wa.me/917989010109?text=Hi%20ProjectVerse%2C%20I%20am%20looking%20for%20a%20final%20year%20project%20for%20my%20college.%20Please%20guide%20me." target="_blank" class="px-3.5 py-2 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/20 text-xs font-semibold flex items-center gap-2 transition">
+          <i data-lucide="message-circle" class="w-4 h-4 text-emerald-400"></i>
+          <span>7989010109</span>
+        </a>
+
+        <!-- Student Auth Button -->
+        <button id="nav-student-btn" onclick="app.handleStudentNavAction()" class="px-3.5 py-2 rounded-xl bg-slate-800/70 border border-slate-700/80 text-slate-200 hover:text-white hover:border-slate-500 text-xs font-medium flex items-center gap-1.5 transition">
+          <i data-lucide="user" class="w-3.5 h-3.5 text-cyan-400"></i>
+          <span id="nav-student-text">Student Login</span>
+        </button>
+
+        <!-- Admin Portal Button -->
+        <button onclick="app.navigate('admin')" class="px-3 py-2 rounded-xl bg-purple-950/40 border border-purple-500/30 text-purple-300 hover:bg-purple-900/40 text-xs font-medium flex items-center gap-1.5 transition">
+          <i data-lucide="shield-check" class="w-3.5 h-3.5 text-purple-400"></i>
+          <span id="nav-admin-text">Admin</span>
+        </button>
+
+        <!-- CTA "Submit Enquiry" -->
+        <button onclick="app.openInterestModal()" class="px-4 py-2 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 text-xs font-bold shadow-lg shadow-cyan-500/20 hover:shadow-cyan-500/40 flex items-center gap-1.5 transition-all">
+          <i data-lucide="send" class="w-3.5 h-3.5"></i>
+          <span>Submit Enquiry</span>
+        </button>
+      </div>
+
+      <!-- Mobile Hamburger Button -->
+      <button onclick="app.toggleMobileMenu()" class="lg:hidden p-2 rounded-lg bg-slate-800 text-slate-200 hover:text-white focus:outline-none">
+        <i data-lucide="menu" id="hamburger-icon" class="w-6 h-6"></i>
+      </button>
+
+    </div>
+
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobile-menu" class="hidden lg:hidden border-b border-slate-800 bg-[#090d16]/95 backdrop-blur-2xl px-4 pt-3 pb-6 space-y-2">
+      <a href="#home" onclick="app.navigate('home'); app.toggleMobileMenu();" class="block px-3 py-2 rounded-lg text-slate-200 hover:bg-slate-800 font-medium">Home</a>
+      <a href="#projects" onclick="app.navigate('projects'); app.toggleMobileMenu();" class="block px-3 py-2 rounded-lg text-slate-200 hover:bg-slate-800 font-medium">Projects Explorer</a>
+      <a href="#domains" onclick="app.navigate('domains'); app.toggleMobileMenu();" class="block px-3 py-2 rounded-lg text-slate-200 hover:bg-slate-800 font-medium">Project Domains</a>
+      <a href="#services" onclick="app.navigate('services'); app.toggleMobileMenu();" class="block px-3 py-2 rounded-lg text-slate-200 hover:bg-slate-800 font-medium">Our Services</a>
+      <a href="#about" onclick="app.navigate('about'); app.toggleMobileMenu();" class="block px-3 py-2 rounded-lg text-slate-200 hover:bg-slate-800 font-medium">About Us</a>
+      <a href="#contact" onclick="app.navigate('contact'); app.toggleMobileMenu();" class="block px-3 py-2 rounded-lg text-slate-200 hover:bg-slate-800 font-medium">Contact Us</a>
+      <a href="#poster" onclick="app.openPosterModal(); app.toggleMobileMenu();" class="block px-3 py-2 rounded-lg text-amber-400 hover:bg-amber-500/10 font-medium">Official Poster</a>
+      <div class="pt-4 border-t border-slate-800 flex flex-col gap-2">
+        <button onclick="app.openInterestModal(); app.toggleMobileMenu();" class="w-full py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 font-bold text-sm">
+          Submit Project Enquiry
+        </button>
+        <button onclick="app.navigate('admin'); app.toggleMobileMenu();" class="w-full py-2 rounded-xl bg-purple-900/30 border border-purple-500/40 text-purple-300 font-medium text-sm">
+          Admin Dashboard
+        </button>
+        <a href="https://wa.me/917989010109?text=Hi%20ProjectVerse%2C%20I%20am%20interested%20in%20a%20project." target="_blank" class="w-full py-2 rounded-xl bg-emerald-600/20 text-emerald-400 border border-emerald-500/40 font-semibold text-sm flex items-center justify-center gap-2">
+          <i data-lucide="message-circle" class="w-4 h-4"></i> WhatsApp 7989010109
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Dynamic Router Container -->
+  <main id="app-content" class="relative z-10 flex-grow">
+    <!-- Views will be dynamically injected here by app.js -->
+    <div class="py-24 text-center">
+      <div class="w-12 h-12 border-4 border-cyan-500 border-t-transparent rounded-full animate-spin mx-auto"></div>
+      <p class="mt-4 text-slate-400 font-medium">Loading PROJECTVERSE Experience...</p>
+    </div>
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="relative z-20 bg-[#02050e] border-t border-slate-800/80 pt-16 pb-12 mt-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Top Trust Badges Strip (from authentic poster) -->
+      <div class="grid grid-cols-2 md:grid-cols-5 gap-4 pb-12 border-b border-slate-800/80 text-center">
+        <div class="flex flex-col items-center p-3 rounded-xl bg-slate-900/40 border border-slate-800">
+          <i data-lucide="shield-check" class="w-6 h-6 text-cyan-400 mb-2"></i>
+          <span class="text-sm font-bold text-white">Trusted by Students</span>
+          <span class="text-xs text-slate-400">12,000+ Enrolled</span>
+        </div>
+        <div class="flex flex-col items-center p-3 rounded-xl bg-slate-900/40 border border-slate-800">
+          <i data-lucide="zap" class="w-6 h-6 text-amber-400 mb-2"></i>
+          <span class="text-sm font-bold text-white">On-Time Delivery</span>
+          <span class="text-xs text-slate-400">Guaranteed Deadline</span>
+        </div>
+        <div class="flex flex-col items-center p-3 rounded-xl bg-slate-900/40 border border-slate-800">
+          <i data-lucide="file-check" class="w-6 h-6 text-emerald-400 mb-2"></i>
+          <span class="text-sm font-bold text-white">Quality & Documented</span>
+          <span class="text-xs text-slate-400">IEEE + Plagiarism Checked</span>
+        </div>
+        <div class="flex flex-col items-center p-3 rounded-xl bg-slate-900/40 border border-slate-800">
+          <i data-lucide="trophy" class="w-6 h-6 text-purple-400 mb-2"></i>
+          <span class="text-sm font-bold text-white">Higher Marks Assurance</span>
+          <span class="text-xs text-slate-400">Comprehensive Viva Q&A</span>
+        </div>
+        <div class="col-span-2 md:col-span-1 flex flex-col items-center p-3 rounded-xl bg-slate-900/40 border border-slate-800">
+          <i data-lucide="target" class="w-6 h-6 text-rose-400 mb-2"></i>
+          <span class="text-sm font-bold text-white">Your Success</span>
+          <span class="text-xs text-slate-400">Our Priority Always</span>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 py-12">
+        
+        <!-- Brand Info -->
+        <div class="lg:col-span-2 space-y-4">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 to-purple-600 flex items-center justify-center font-bold text-black text-xl">
+              🚀
+            </div>
+            <span class="text-2xl font-black font-heading text-gradient-cyan">PROJECT<span class="text-white">VERSE</span></span>
+          </div>
+          <p class="text-slate-400 text-sm leading-relaxed max-w-sm">
+            "Your Final Year. Our Responsibility. Your Success."<br>
+            Empowering B.Tech, M.Tech, MCA, BCA, and B.Sc/M.Sc students with verified working projects, full documentation, working demonstrations, and live viva coaching.
+          </p>
+          <div class="pt-2 flex flex-col gap-2 text-sm text-slate-300">
+            <div class="flex items-center gap-2">
+              <i data-lucide="phone" class="w-4 h-4 text-cyan-400"></i>
+              <span>Hotline / Call: <a href="tel:7989010109" class="text-white font-semibold hover:text-cyan-400">7989010109</a></span>
+            </div>
+            <div class="flex items-center gap-2">
+              <i data-lucide="message-circle" class="w-4 h-4 text-emerald-400"></i>
+              <span>WhatsApp: <a href="https://wa.me/917989010109" target="_blank" class="text-white font-semibold hover:text-emerald-400">7989010109</a></span>
+            </div>
+            <div class="flex items-center gap-2">
+              <i data-lucide="mail" class="w-4 h-4 text-amber-400"></i>
+              <span>Email: <a href="mailto:saikirangorle909@gmail.com" class="text-white font-semibold hover:text-amber-400">saikirangorle909@gmail.com</a></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div>
+          <h4 class="text-white font-bold text-sm tracking-wider uppercase mb-4 font-heading">Explore</h4>
+          <ul class="space-y-2.5 text-sm text-slate-400">
+            <li><a href="#home" onclick="app.navigate('home')" class="hover:text-cyan-400 transition">Home</a></li>
+            <li><a href="#projects" onclick="app.navigate('projects')" class="hover:text-cyan-400 transition">Projects Catalog</a></li>
+            <li><a href="#domains" onclick="app.navigate('domains')" class="hover:text-cyan-400 transition">Domains & Tech</a></li>
+            <li><a href="#services" onclick="app.navigate('services')" class="hover:text-cyan-400 transition">Viva & Documentation</a></li>
+            <li><a href="#about" onclick="app.navigate('about')" class="hover:text-cyan-400 transition">About Us</a></li>
+            <li><a href="#contact" onclick="app.navigate('contact')" class="hover:text-cyan-400 transition">Contact Project Team</a></li>
+          </ul>
+        </div>
+
+        <!-- Domains Shortlist -->
+        <div>
+          <h4 class="text-white font-bold text-sm tracking-wider uppercase mb-4 font-heading">Trending Domains</h4>
+          <ul class="space-y-2.5 text-sm text-slate-400">
+            <li><a href="#projects" onclick="app.filterByDomain('ai-ml')" class="hover:text-cyan-400 transition">AI & Machine Learning</a></li>
+            <li><a href="#projects" onclick="app.filterByDomain('data-science')" class="hover:text-cyan-400 transition">Data Science & Analytics</a></li>
+            <li><a href="#projects" onclick="app.filterByDomain('iot')" class="hover:text-cyan-400 transition">IoT & Embedded Systems</a></li>
+            <li><a href="#projects" onclick="app.filterByDomain('blockchain')" class="hover:text-cyan-400 transition">Blockchain & Web3</a></li>
+            <li><a href="#projects" onclick="app.filterByDomain('cyber-security')" class="hover:text-cyan-400 transition">Cyber Security & Forensics</a></li>
+            <li><a href="#projects" onclick="app.filterByDomain('cloud-computing')" class="hover:text-cyan-400 transition">Cloud Computing (AWS/GCP)</a></li>
+          </ul>
+        </div>
+
+        <!-- Target Students & Action -->
+        <div>
+          <h4 class="text-white font-bold text-sm tracking-wider uppercase mb-4 font-heading">Target Courses</h4>
+          <p class="text-xs text-slate-400 leading-relaxed mb-4">
+            B.Tech | M.Tech | MCA | BCA | B.Sc | M.Sc<br>
+            Mini Projects | Major Projects | Research
+          </p>
+          <button onclick="app.openInterestModal()" class="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 font-bold text-xs hover:from-cyan-400 hover:to-blue-500 shadow-lg shadow-cyan-500/20 transition">
+            Book Free Consultation
+          </button>
+          <button onclick="app.openPosterModal()" class="w-full mt-2 py-2 px-4 rounded-xl bg-slate-800 text-slate-300 hover:text-white border border-slate-700 text-xs font-medium transition flex items-center justify-center gap-1.5">
+            <i data-lucide="image" class="w-3.5 h-3.5 text-amber-400"></i> View Official Poster
+          </button>
+        </div>
+
+      </div>
+
+      <div class="pt-8 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+        <p>© 2026 PROJECTVERSE. All Rights Reserved. Built for Students Success.</p>
+        <div class="flex items-center gap-6">
+          <a href="#privacy" onclick="app.navigate('privacy')" class="hover:text-slate-300 transition">Privacy Policy</a>
+          <a href="#terms" onclick="app.navigate('terms')" class="hover:text-slate-300 transition">Terms & Conditions</a>
+          <a href="#admin" onclick="app.navigate('admin')" class="hover:text-purple-400 transition">Admin Portal</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp Beacon -->
+  <div class="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">
+    <!-- Back to top button -->
+    <button id="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="hidden w-10 h-10 rounded-full bg-slate-800/90 border border-slate-700 text-slate-300 hover:text-white hover:bg-slate-700 flex items-center justify-center shadow-lg transition">
+      <i data-lucide="arrow-up" class="w-5 h-5"></i>
+    </button>
+    
+    <!-- WhatsApp Floating Action -->
+    <a href="https://wa.me/917989010109?text=Hi%20ProjectVerse%2C%20I%20am%20interested%20in%20taking%20a%20project%20for%20my%20college.%20Please%20guide%20me." target="_blank" class="wa-floating-btn group relative flex items-center gap-2 p-3 sm:px-4 sm:py-3 rounded-full bg-[#25D366] text-white shadow-2xl hover:scale-105 transition-all duration-300">
+      <div class="w-6 h-6 flex items-center justify-center">
+        <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 fill-current">
+          <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+        </svg>
+      </div>
+      <span class="hidden sm:inline font-bold text-sm tracking-wide">WhatsApp 7989010109</span>
+      <span class="absolute -top-1 -right-1 w-3.5 h-3.5 bg-amber-400 rounded-full border-2 border-[#030712] animate-ping"></span>
+    </a>
+  </div>
+
+  <!-- Modal Container for Leads (I'm Interested Form) -->
+  <div id="modal-interest" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/80 backdrop-blur-md overflow-y-auto">
+    <div class="relative w-full max-w-2xl bg-[#090d16] border border-cyan-500/30 rounded-2xl shadow-2xl shadow-cyan-500/10 p-6 sm:p-8 my-8 overflow-hidden">
+      <div class="absolute -top-24 -right-24 w-48 h-48 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
+      
+      <!-- Close button -->
+      <button onclick="app.closeInterestModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white p-2 rounded-lg bg-slate-800/50 hover:bg-slate-800 transition">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <!-- Modal Header -->
+      <div class="mb-6">
+        <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 mb-2">
+          🚀 Instant Project Registration & Consultation
+        </span>
+        <h3 class="text-2xl font-bold font-heading text-white">Express Your Project Interest</h3>
+        <p class="text-slate-400 text-xs sm:text-sm mt-1">
+          Fill in your details below. Our senior project architect will contact you within 15 minutes with complete code, demo access, and viva explanation details.
+        </p>
+      </div>
+
+      <!-- Lead Submission Form -->
+      <form id="interest-form" onsubmit="app.handleInterestSubmit(event)" class="space-y-4">
+        
+        <!-- Pre-selected Project Indicator -->
+        <div id="modal-project-badge" class="p-3 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-between">
+          <div>
+            <span class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Target Project:</span>
+            <div id="modal-project-title" class="text-sm font-bold text-cyan-300">General Consultation (All Domains)</div>
+          </div>
+          <span id="modal-project-domain" class="text-xs px-2.5 py-1 rounded-md bg-purple-500/20 text-purple-300 font-medium border border-purple-500/30">
+            Multi-Domain
+          </span>
+        </div>
+        <input type="hidden" id="form-project-id" name="project_id" value="">
+        <input type="hidden" id="form-project-title" name="project_title" value="General Project Inquiry">
+        <input type="hidden" id="form-domain-name" name="domain_name" value="Multi-Domain">
+        <input type="hidden" id="form-category-name" name="category_name" value="Major Projects">
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <!-- Student Name -->
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1">Student Full Name *</label>
+            <input type="text" id="form-student-name" required placeholder="e.g. Sravan Reddy" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900/90 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-cyan-400 transition">
+          </div>
+
+          <!-- Mobile Number -->
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1">WhatsApp / Mobile Number *</label>
+            <input type="tel" id="form-mobile" required pattern="[0-9]{10}" placeholder="10-digit mobile (e.g. 9848012345)" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900/90 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-cyan-400 transition">
+          </div>
+
+          <!-- Email -->
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1">Email Address *</label>
+            <input type="email" id="form-email" required placeholder="e.g. student@college.edu" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900/90 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-cyan-400 transition">
+          </div>
+
+          <!-- City -->
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1">City / Location *</label>
+            <input type="text" id="form-city" required placeholder="e.g. Hyderabad, Chennai, Bangalore" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900/90 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-cyan-400 transition">
+          </div>
+
+          <!-- College Name -->
+          <div class="sm:col-span-2">
+            <label class="block text-xs font-semibold text-slate-300 mb-1">College / University Name *</label>
+            <input type="text" id="form-college" required placeholder="e.g. JNTU Hyderabad / SRM / VIT / CBIT" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900/90 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-cyan-400 transition">
+          </div>
+
+          <!-- Course -->
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1">Degree Course *</label>
+            <select id="form-course" required class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900/90 border border-slate-700 text-white text-sm focus:outline-none focus:border-cyan-400 transition">
+              <option value="B.Tech">B.Tech</option>
+              <option value="M.Tech">M.Tech</option>
+              <option value="MCA">MCA</option>
+              <option value="BCA">BCA</option>
+              <option value="B.Sc">B.Sc Computer Science</option>
+              <option value="M.Sc">M.Sc Computer Science</option>
+              <option value="Diploma">Diploma Engineering</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <!-- Department -->
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1">Department / Branch *</label>
+            <select id="form-department" required class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900/90 border border-slate-700 text-white text-sm focus:outline-none focus:border-cyan-400 transition">
+              <option value="Computer Science & Engineering (CSE)">CSE</option>
+              <option value="Information Technology (IT)">IT</option>
+              <option value="AI & Machine Learning (AI/ML)">AI / ML</option>
+              <option value="Data Science (DS)">Data Science</option>
+              <option value="Electronics & Communication (ECE)">ECE</option>
+              <option value="Electrical & Electronics (EEE)">EEE</option>
+              <option value="Mechanical / Civil">Mechanical / Civil</option>
+              <option value="Cyber Security / IoT">Cyber Security / IoT</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Optional additional fields -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1">Preferred Technologies (Optional)</label>
+            <input type="text" id="form-pref-tech" placeholder="e.g. Python, React, PyTorch, ESP32" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900/90 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-cyan-400 transition">
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1">Project Category</label>
+            <select id="form-category-select" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900/90 border border-slate-700 text-white text-sm focus:outline-none focus:border-cyan-400 transition">
+              <option value="Major Projects">Major Projects (Final Year)</option>
+              <option value="Mini Projects">Mini Projects</option>
+              <option value="Research Projects">Research Projects (IEEE / Scopus)</option>
+              <option value="Industry-Level Projects">Industry-Level Projects</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1">Custom Requirements / Notes (Optional)</label>
+          <textarea id="form-message" rows="2" placeholder="e.g. We are a batch of 4 students, need PPT + documentation ready by March 15th." class="w-full px-3.5 py-2 rounded-xl bg-slate-900/90 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-cyan-400 transition"></textarea>
+        </div>
+
+        <!-- Consent Checkbox -->
+        <div class="flex items-start gap-2 pt-1">
+          <input type="checkbox" id="form-consent" required checked class="mt-1 rounded bg-slate-800 border-slate-700 text-cyan-500 focus:ring-0">
+          <label for="form-consent" class="text-xs text-slate-400">
+            I agree to receive project demonstration details and guidance via WhatsApp or phone call at 7989010109. Your personal information is 100% confidential.
+          </label>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="pt-2">
+          <button type="submit" id="form-submit-btn" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-amber-400 via-amber-500 to-yellow-500 text-slate-950 font-black text-sm uppercase tracking-wider shadow-lg shadow-amber-500/20 hover:shadow-amber-500/40 hover:brightness-110 flex items-center justify-center gap-2 transition-all">
+            <i data-lucide="send" class="w-4 h-4"></i>
+            <span>Submit Project Interest Now</span>
+          </button>
+        </div>
+
+      </form>
+
+      <!-- Success Confirmation View -->
+      <div id="interest-success" class="hidden text-center py-6 space-y-4">
+        <div class="w-16 h-16 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 flex items-center justify-center mx-auto text-3xl">
+          ✓
+        </div>
+        <div>
+          <h4 class="text-2xl font-bold font-heading text-white">Thank You! Your Interest Has Been Successfully Submitted.</h4>
+          <p class="text-slate-300 text-sm mt-1">Our Team Will Contact You Soon.</p>
+        </div>
+        <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 text-xs text-slate-400 max-w-md mx-auto">
+          Reference Code: <span id="success-ref-code" class="text-cyan-400 font-mono font-bold text-sm">PV-2026-XXXX</span>
+          <p class="mt-1">Keep this reference code for your viva schedule and discount tracking.</p>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-3 justify-center pt-2">
+          <a id="success-wa-btn" href="#" target="_blank" class="px-5 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs flex items-center justify-center gap-2 transition">
+            <i data-lucide="message-circle" class="w-4 h-4"></i> Chat on WhatsApp Instantly
+          </a>
+          <button onclick="app.closeInterestModal()" class="px-5 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold transition">
+            Close & Continue Browsing
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Poster Showcase Modal -->
+  <div id="modal-poster" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/85 backdrop-blur-md overflow-y-auto">
+    <div class="relative w-full max-w-3xl bg-[#090d16] border border-amber-500/30 rounded-2xl shadow-2xl p-6 my-8">
+      <button onclick="app.closePosterModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white p-2 rounded-lg bg-slate-800/80">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+      <div class="text-center mb-4">
+        <span class="text-xs font-bold text-amber-400 uppercase tracking-widest">Official Branding & Brochure</span>
+        <h3 class="text-xl font-bold font-heading text-white">PROJECTVERSE – Your Final Year Project Partner!</h3>
+      </div>
+      <div class="flex justify-center bg-black/40 rounded-xl p-2 border border-slate-800 max-h-[75vh] overflow-auto">
+        <img src="/uploads/poster.jpg" alt="PROJECTVERSE Official Poster" class="rounded-lg shadow-2xl max-w-full h-auto object-contain">
+      </div>
+      <div class="mt-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-400">
+        <span>Hotline & WhatsApp: <strong class="text-white">7989010109</strong></span>
+        <div class="flex gap-2">
+          <a href="/uploads/poster.jpg" download="ProjectVerse_Official_Poster.jpg" class="px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold flex items-center gap-1.5 transition">
+            <i data-lucide="download" class="w-3.5 h-3.5"></i> Download Poster
+          </a>
+          <button onclick="app.openInterestModal(); app.closePosterModal();" class="px-4 py-2 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold transition">
+            Enquire for Your Project
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Demo Video Modal -->
+  <div id="modal-demo" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/85 backdrop-blur-md">
+    <div class="relative w-full max-w-4xl bg-[#090d16] border border-cyan-500/30 rounded-2xl shadow-2xl p-6">
+      <button onclick="app.closeDemoModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white p-2 rounded-lg bg-slate-800/80">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+      <h3 id="modal-demo-title" class="text-lg font-bold font-heading text-white mb-4 pr-12">Project Live Demonstration</h3>
+      <div class="relative w-full aspect-video rounded-xl overflow-hidden bg-black border border-slate-800">
+        <iframe id="modal-demo-iframe" class="w-full h-full" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="mt-4 flex justify-between items-center text-xs text-slate-400">
+        <span>Need custom code walkthrough or 1-on-1 viva session?</span>
+        <button onclick="app.openInterestModal(); app.closeDemoModal();" class="px-4 py-2 rounded-lg bg-cyan-500 text-slate-950 font-bold hover:bg-cyan-400 transition">
+          I'm Interested in This Project
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Student Auth Modal (Login / Register) -->
+  <div id="modal-student-auth" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+    <div class="relative w-full max-w-md bg-[#090d16] border border-cyan-500/30 rounded-2xl shadow-2xl p-6 sm:p-8">
+      <button onclick="app.closeStudentAuthModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white p-2 rounded-lg bg-slate-800/50">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <div class="flex gap-4 border-b border-slate-800 pb-3 mb-6">
+        <button id="auth-tab-login" onclick="app.switchStudentAuthTab('login')" class="font-bold text-sm text-cyan-400 border-b-2 border-cyan-400 pb-1">
+          Student Login
+        </button>
+        <button id="auth-tab-register" onclick="app.switchStudentAuthTab('register')" class="font-bold text-sm text-slate-400 hover:text-slate-200 pb-1">
+          New Student Register
+        </button>
+      </div>
+
+      <!-- Login Form -->
+      <form id="student-login-form" onsubmit="app.handleStudentLogin(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1">Email Address</label>
+          <input type="email" id="login-email" required placeholder="student@demo.com" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm focus:outline-none focus:border-cyan-400">
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1">Password</label>
+          <input type="password" id="login-password" required placeholder="••••••••" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm focus:outline-none focus:border-cyan-400">
+        </div>
+        <p class="text-[11px] text-slate-400">Demo student account: <span class="text-cyan-300 font-mono">student@demo.com</span> / <span class="text-cyan-300 font-mono">student123</span></p>
+        <button type="submit" class="w-full py-3 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-sm shadow-lg shadow-cyan-500/20 transition">
+          Sign In to Dashboard
+        </button>
+      </form>
+
+      <!-- Register Form -->
+      <form id="student-register-form" onsubmit="app.handleStudentRegister(event)" class="space-y-3 hidden">
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1">Full Name *</label>
+          <input type="text" id="reg-name" required placeholder="Kiran Kumar" class="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm">
+        </div>
+        <div class="grid grid-cols-2 gap-2">
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1">Email *</label>
+            <input type="email" id="reg-email" required placeholder="name@domain.com" class="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm">
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1">Mobile *</label>
+            <input type="tel" id="reg-phone" required placeholder="9876543210" class="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm">
+          </div>
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1">College Name *</label>
+          <input type="text" id="reg-college" required placeholder="JNTU / Osmania" class="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm">
+        </div>
+        <div class="grid grid-cols-2 gap-2">
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1">Course</label>
+            <select id="reg-course" class="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm">
+              <option value="B.Tech">B.Tech</option>
+              <option value="M.Tech">M.Tech</option>
+              <option value="MCA">MCA</option>
+              <option value="BCA">BCA</option>
+              <option value="B.Sc">B.Sc</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1">City</label>
+            <input type="text" id="reg-city" placeholder="Hyderabad" class="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm">
+          </div>
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1">Password *</label>
+          <input type="password" id="reg-password" required placeholder="••••••••" class="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm">
+        </div>
+        <button type="submit" class="w-full py-3 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-sm shadow-lg shadow-cyan-500/20 transition">
+          Create Account & Access Projects
+        </button>
+      </form>
+
+    </div>
+  </div>
+
+  <!-- Toast Notification Center -->
+  <div id="toast-container" class="fixed top-24 right-6 z-50 flex flex-col gap-2 max-w-sm pointer-events-none"></div>
+
+  <!-- Application Logic -->
+  <script src="/js/app.js"></script>
+</body>
+</html>
