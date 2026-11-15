@@ -252,7 +252,7 @@ const app = {
   // 1. HOME VIEW
   renderHomeView() {
     const featuredProjects = this.projects.slice(0, 6);
-    const totalProjects = Math.max(this.projects.length, 50);
+    const totalProjects = Math.max(this.projects.length, 500);
 
     return `
       <!-- Hero Section -->
