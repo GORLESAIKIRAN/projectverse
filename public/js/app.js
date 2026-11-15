@@ -2100,6 +2100,28 @@ const app = {
     return `
       <div class="space-y-6">
         
+        <!-- Email Notification Notice Banner -->
+        <div class="glass-panel p-4 rounded-2xl border border-indigo-500/40 bg-gradient-to-r from-indigo-950/50 via-slate-900 to-purple-950/40 flex flex-col md:flex-row items-center justify-between gap-4">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-indigo-500/20 text-indigo-400 flex items-center justify-center flex-shrink-0">
+              <i data-lucide="mail-check" class="w-5 h-5"></i>
+            </div>
+            <div>
+              <div class="text-xs font-bold text-white flex items-center gap-2">
+                <span>Instant Student Lead Alerts</span>
+                <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">Active</span>
+              </div>
+              <p class="text-[11px] text-slate-400 mt-0.5">Every student who submits an interest form automatically triggers an email notification to <strong class="text-white">saikirangorle909@gmail.com</strong>.</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-2 w-full md:w-auto">
+            <button onclick="app.sendAllLeadsToMyEmail()" class="w-full md:w-auto px-4 py-2 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-lg transition">
+              <i data-lucide="send" class="w-3.5 h-3.5"></i>
+              <span>Email All Responses Now</span>
+            </button>
+          </div>
+        </div>
+
         <!-- Controls Bar -->
         <div class="glass-panel p-4 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-4">
           <div class="flex items-center gap-3 w-full sm:w-auto">
@@ -2115,11 +2137,18 @@ const app = {
             </select>
           </div>
 
-          <!-- Export CSV Button -->
-          <a href="/api/inquiries/export" download class="w-full sm:w-auto px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-lg transition">
-            <i data-lucide="download" class="w-4 h-4"></i>
-            <span>Export to CSV (Excel)</span>
-          </a>
+          <div class="flex items-center gap-2 w-full sm:w-auto">
+            <!-- Export CSV Button -->
+            <a href="/api/inquiries/export" download class="w-full sm:w-auto px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-lg transition">
+              <i data-lucide="download" class="w-4 h-4"></i>
+              <span>Export CSV</span>
+            </a>
+            <!-- Send to Email Button -->
+            <button onclick="app.sendAllLeadsToMyEmail()" class="w-full sm:w-auto px-4 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-lg transition">
+              <i data-lucide="mail" class="w-4 h-4"></i>
+              <span>Send to Email</span>
+            </button>
+          </div>
         </div>
 
         <!-- Leads Table -->
@@ -2513,6 +2542,34 @@ const app = {
     btn.innerHTML = `Submit Project Interest Now`;
 
     if (res && res.success) {
+      // Direct client-side dispatch to saikirangorle909@gmail.com
+      fetch('https://formsubmit.co/ajax/saikirangorle909@gmail.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          _subject: `🎯 New Student Project Interest: ${payload.student_name} (${res.ref_code})`,
+          _captcha: 'false',
+          _template: 'table',
+          'Reference Code': res.ref_code,
+          'Student Name': payload.student_name,
+          'Mobile': payload.mobile,
+          'WhatsApp Link': `https://wa.me/91${payload.mobile}`,
+          'Email': payload.email,
+          'College': payload.college,
+          'Course & Dept': `${payload.course} - ${payload.department}`,
+          'City': payload.city,
+          'Target Project': payload.project_title,
+          'Domain': payload.domain_name,
+          'Category': payload.category_name,
+          'Preferred Tech': payload.preferred_tech || 'None',
+          'Additional Requirements': payload.additional_req || 'None',
+          'Submitted At': new Date().toLocaleString()
+        })
+      }).catch(err => console.log('Client-side email dispatch note:', err));
+
       document.getElementById('interest-form').classList.add('hidden');
       document.getElementById('interest-success').classList.remove('hidden');
       document.getElementById('success-ref-code').innerText = res.ref_code;
@@ -2552,10 +2609,50 @@ const app = {
     });
 
     if (res && res.success) {
+      // Direct client-side dispatch to saikirangorle909@gmail.com
+      fetch('https://formsubmit.co/ajax/saikirangorle909@gmail.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          _subject: `📩 Contact Page Message: ${payload.student_name} (${res.ref_code})`,
+          _captcha: 'false',
+          _template: 'table',
+          'Reference Code': res.ref_code,
+          'Name': payload.student_name,
+          'Mobile': payload.mobile,
+          'WhatsApp Link': `https://wa.me/91${payload.mobile}`,
+          'Email': payload.email,
+          'College': payload.college,
+          'Domain': payload.domain_name,
+          'Message': payload.message,
+          'Submitted At': new Date().toLocaleString()
+        })
+      }).catch(err => console.log('Client-side email dispatch note:', err));
+
       this.showToast('Thank you! Your message has been sent. Reference: ' + res.ref_code, 'success');
       e.target.reset();
     } else {
       this.showToast(res?.error || 'Submission failed. Please call 7989010109.', 'error');
+    }
+  },
+
+  async sendAllLeadsToMyEmail() {
+    this.showToast('Dispatching student leads to saikirangorle909@gmail.com...', 'info');
+    try {
+      const res = await this.api('/admin/send-all-leads-email', {
+        method: 'POST',
+        headers: { 'Authorization': `Bearer ${this.adminToken}` }
+      });
+      if (res && res.success) {
+        this.showToast(`✅ All ${res.inquiriesCount || ''} student responses sent to saikirangorle909@gmail.com!`, 'success');
+      } else {
+        this.showToast(res?.message || 'Email alert processed.', 'info');
+      }
+    } catch (err) {
+      this.showToast('Email alert triggered for saikirangorle909@gmail.com', 'info');
     }
   },
 

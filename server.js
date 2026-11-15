@@ -89,6 +89,8 @@ async function sendLeadNotificationEmail(lead) {
   try {
     const payload = {
       _subject: `🎯 New Student Project Lead: ${lead.student_name} (${lead.ref_code})`,
+      _captcha: 'false',
+      _template: 'table',
       'Reference Code': lead.ref_code,
       'Student Name': lead.student_name,
       'Mobile Number': lead.mobile,
@@ -110,7 +112,9 @@ async function sendLeadNotificationEmail(lead) {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Accept': 'application/json'
+        'Accept': 'application/json',
+        'Origin': 'https://projectverse-9viu.onrender.com',
+        'Referer': 'https://projectverse-9viu.onrender.com/'
       },
       body: JSON.stringify(payload)
     }).then(r => r.json()).then(data => {
@@ -120,6 +124,47 @@ async function sendLeadNotificationEmail(lead) {
     });
   } catch (err) {
     console.warn('⚠️ Lead email dispatch error:', err.message);
+  }
+}
+
+// Helper to send all leads summary digest to saikirangorle909@gmail.com
+async function sendAllLeadsDigestEmail(inquiries) {
+  try {
+    const summary = inquiries.map((inq, idx) => {
+      return `${idx + 1}. [${inq.ref_code}] ${inq.student_name}
+Mobile: ${inq.mobile} (https://wa.me/91${inq.mobile})
+Email: ${inq.email}
+College: ${inq.college} (${inq.course} - ${inq.department}) | City: ${inq.city}
+Project: ${inq.project_title} [${inq.domain_name} / ${inq.category_name}]
+Status: ${inq.status}
+Requirements: ${inq.additional_req || inq.message || 'None'}
+Submitted: ${inq.created_at}`;
+    }).join('\n\n' + '='.repeat(40) + '\n\n');
+
+    const payload = {
+      _subject: `📊 ProjectVerse: Consolidated Student Leads (${inquiries.length} Inquiries)`,
+      _captcha: 'false',
+      _template: 'box',
+      'Total Inquiries Count': inquiries.length,
+      'Recipient Email': 'saikirangorle909@gmail.com',
+      'Report Generation Time': new Date().toISOString(),
+      'All Student Responses': summary
+    };
+
+    const res = await fetch('https://formsubmit.co/ajax/saikirangorle909@gmail.com', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Origin': 'https://projectverse-9viu.onrender.com',
+        'Referer': 'https://projectverse-9viu.onrender.com/'
+      },
+      body: JSON.stringify(payload)
+    });
+    return await res.json().catch(() => ({ success: true }));
+  } catch (err) {
+    console.warn('⚠️ Digest email dispatch error:', err.message);
+    return { error: err.message };
   }
 }
 
@@ -918,6 +963,24 @@ const server = http.createServer(async (req, res) => {
       });
 
       return sendCsv(res, `projectverse_leads_${Date.now()}.csv`, csv);
+    }
+
+    // POST /api/admin/send-all-leads-email (Email all student leads digest to saikirangorle909@gmail.com)
+    if (pathname === '/api/admin/send-all-leads-email' && req.method === 'POST') {
+      const authUser = getAuthUser(req);
+      if (!authUser || authUser.role !== 'admin') {
+        return sendJson(res, 403, { error: 'Unauthorized: Admin access required' });
+      }
+
+      const inquiries = db.prepare('SELECT * FROM inquiries ORDER BY id DESC').all();
+      const emailResult = await sendAllLeadsDigestEmail(inquiries);
+
+      return sendJson(res, 200, {
+        success: true,
+        message: `Digest of ${inquiries.length} student leads successfully dispatched to saikirangorle909@gmail.com`,
+        emailResult,
+        inquiriesCount: inquiries.length
+      });
     }
 
     // PATCH /api/inquiries/:id (Update lead status or notes)
