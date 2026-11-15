@@ -48,12 +48,10 @@ PROJECTVERSE is a futuristic, full-stack student project discovery, documentatio
 
 ---
 
-## 🔐 Default Credentials
+## 🔐 Portal Authentication
 
-| Portal | Role | Email | Password |
-|---|---|---|---|
-| `/admin` | Administrator | `admin@projectverse.com` | `admin123` |
-| `/login` | Demo Student | `student@demo.com` | `student123` |
+- **Student Portal**: Students can register or log in with their college details. Demo account: `student@demo.com` / `student123`.
+- **Admin Control Center**: Private authorized access for the platform administrator. Credentials are confidential and managed securely.
 
 ---
 

@@ -173,41 +173,53 @@ function initDatabase() {
 function seedInitialData() {
   const now = new Date().toISOString();
 
-  // 1. Seed Admin & Demo Student
-  const adminCheck = db.prepare('SELECT id FROM users WHERE email = ?').get('admin@projectverse.com');
+  // 1. Seed & Update Director Admin (saikirangorle909@gmail.com / Sai@12345)
+  const primaryAdminEmail = 'saikirangorle909@gmail.com';
+  const primaryAdminHash = hashPassword('Sai@12345');
+  const existingPrimary = db.prepare("SELECT id FROM users WHERE LOWER(email) = LOWER(?)").get(primaryAdminEmail);
+  if (!existingPrimary) {
+    db.prepare(`
+      INSERT INTO users (name, email, phone, password_hash, role, college, course, department, year_sem, city, created_at)
+      VALUES (?, ?, ?, ?, 'admin', 'ProjectVerse Management', 'Administration', 'Director', 'Director', 'Hyderabad', ?)
+    `).run(
+      'Saikiran Gorle (Director & Admin)',
+      primaryAdminEmail,
+      '7989010109',
+      primaryAdminHash,
+      now
+    );
+  } else {
+    db.prepare("UPDATE users SET password_hash = ?, role = 'admin' WHERE id = ?").run(primaryAdminHash, existingPrimary.id);
+  }
+
+  // Backup administrator
+  const adminCheck = db.prepare("SELECT id FROM users WHERE LOWER(email) = 'admin@projectverse.com'").get();
   if (!adminCheck) {
     db.prepare(`
       INSERT INTO users (name, email, phone, password_hash, role, college, course, department, year_sem, city, created_at)
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+      VALUES (?, ?, ?, ?, 'admin', 'ProjectVerse HQ', 'SaaS Management', 'Engineering & Research', 'Director', 'Hyderabad', ?)
     `).run(
       'ProjectVerse Administrator',
       'admin@projectverse.com',
       '7989010109',
-      hashPassword('admin123'),
-      'admin',
-      'ProjectVerse HQ',
-      'SaaS Management',
-      'Engineering & Research',
-      'Director',
-      'Hyderabad',
+      primaryAdminHash,
       now
     );
+  } else {
+    db.prepare("UPDATE users SET password_hash = ?, role = 'admin' WHERE id = ?").run(primaryAdminHash, adminCheck.id);
+  }
 
-    // Seed Demo Student
+  // Seed Demo Student
+  const studentCheck = db.prepare("SELECT id FROM users WHERE LOWER(email) = 'student@demo.com'").get();
+  if (!studentCheck) {
     db.prepare(`
       INSERT INTO users (name, email, phone, password_hash, role, college, course, department, year_sem, city, created_at)
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+      VALUES (?, ?, ?, ?, 'student', 'JNTU Hyderabad', 'B.Tech', 'Computer Science & Engineering', '4th Year / 2nd Sem', 'Hyderabad', ?)
     `).run(
       'Kiran Kumar',
       'student@demo.com',
       '9876543210',
       hashPassword('student123'),
-      'student',
-      'JNTU Hyderabad',
-      'B.Tech',
-      'Computer Science & Engineering',
-      '4th Year / 2nd Sem',
-      'Hyderabad',
       now
     );
   }

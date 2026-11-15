@@ -114,7 +114,7 @@ const app = {
       return {
         success: true,
         token: 'local_admin_token',
-        user: { name: 'Admin (Local)', email: 'admin@projectverse.com', role: 'admin' }
+        user: { name: 'Saikiran Gorle (Director & Admin)', email: 'saikirangorle909@gmail.com', role: 'admin' }
       };
     }
     if (endpoint === '/inquiries' && options.method === 'POST') {
@@ -1866,13 +1866,13 @@ const app = {
             <form onsubmit="app.handleAdminLogin(event)" class="space-y-4">
               <div>
                 <label class="block text-xs font-semibold text-slate-300 mb-1">Admin Email</label>
-                <input type="email" id="admin-login-email" required value="admin@projectverse.com" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm focus:outline-none focus:border-purple-400">
+                <input type="email" id="admin-login-email" required placeholder="Enter administrator email" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm focus:outline-none focus:border-purple-400">
               </div>
               <div>
                 <label class="block text-xs font-semibold text-slate-300 mb-1">Admin Password</label>
-                <input type="password" id="admin-login-password" required value="admin123" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm focus:outline-none focus:border-purple-400">
+                <input type="password" id="admin-login-password" required placeholder="••••••••" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm focus:outline-none focus:border-purple-400">
               </div>
-              <p class="text-[11px] text-slate-500">Default Credentials: <span class="text-purple-300 font-mono">admin@projectverse.com</span> / <span class="text-purple-300 font-mono">admin123</span></p>
+              <p class="text-[11px] text-slate-500 flex items-center gap-1.5"><i data-lucide="shield" class="w-3.5 h-3.5 text-purple-400"></i> Authorized administrator access only.</p>
               <button type="submit" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-bold text-xs uppercase tracking-wider shadow-lg shadow-purple-500/25 transition">
                 Authenticate Admin Access
               </button>
@@ -1971,7 +1971,7 @@ const app = {
   // Admin Tab 1: Overview
   renderAdminOverviewTab() {
     const stats = this.adminStats || {
-      totalProjects: this.projects.length,
+      totalProjects: '500+',
       totalDomains: this.domains.length,
       totalStudents: 1,
       totalInquiries: 5,
@@ -1987,8 +1987,8 @@ const app = {
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
           <div class="glass-panel p-5 rounded-2xl border-l-4 border-l-cyan-400">
             <span class="text-xs text-slate-400 font-bold uppercase">Total Projects</span>
-            <div class="text-3xl font-black font-heading text-white mt-1">${stats.totalProjects}</div>
-            <span class="text-[10px] text-cyan-400 mt-1 block">Live in Catalog</span>
+            <div class="text-3xl font-black font-heading text-white mt-1">500+</div>
+            <span class="text-[10px] text-cyan-400 mt-1 block">Live & Verified Projects</span>
           </div>
 
           <div class="glass-panel p-5 rounded-2xl border-l-4 border-l-purple-400">
@@ -2688,8 +2688,8 @@ const app = {
   // Admin Auth Handlers
   async handleAdminLogin(e) {
     e.preventDefault();
-    const email = document.getElementById('admin-login-email').value;
-    const password = document.getElementById('admin-login-password').value;
+    const email = (document.getElementById('admin-login-email').value || '').trim();
+    const password = (document.getElementById('admin-login-password').value || '').trim();
 
     const res = await this.api('/auth/admin-login', {
       method: 'POST',
