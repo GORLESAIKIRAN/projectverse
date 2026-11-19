@@ -1,21 +1,25 @@
 {
-  "name": "projectverse",
+  "name": "gsk-mediaverse",
   "version": "1.0.0",
-  "description": "PROJECTVERSE - Final Year Student Project Management & Lead Generation Platform",
+  "description": "GSK MEDIAVERSE - All-in-One Video & Audio Downloader and Media Utility Platform",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "dev": "node server.js"
   },
   "engines": {
-    "node": ">=22.5.0"
+    "node": ">=20.0.0"
   },
   "keywords": [
-    "student-projects",
-    "final-year-projects",
-    "lead-generation",
-    "education",
-    "saas"
+    "mediaverse",
+    "gsk",
+    "video-downloader",
+    "audio-converter",
+    "youtube-downloader",
+    "instagram-downloader",
+    "media-editor",
+    "audio-studio"
   ],
-  "author": "Saikiran Gorle",
+  "author": "GSK Studio",
   "license": "MIT"
 }

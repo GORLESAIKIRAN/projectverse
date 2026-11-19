@@ -3,9 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PROJECTVERSE – Your Final Year Project Partner | Mini, Major & Research Projects</title>
-  <meta name="description" content="Discover, explore and complete your final year projects with PROJECTVERSE. Complete Project Support, PPT & Report, Working Demos, and 100% Viva Preparation for B.Tech, M.Tech, MCA, BCA, B.Sc & M.Sc students.">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220%22%3E<text y=%2226%22 font-size=%2226%22>🚀</text></svg>">
+  <title>GSK MEDIAVERSE – All-in-One Video & Audio Studio | Everything Media</title>
+  <meta name="description" content="GSK MEDIAVERSE is a next-generation video & audio downloader, converter, editor, and media utility studio. Download YouTube & Instagram media in 1080p Full HD, convert to MP3/WAV, trim videos, and edit audio.">
+  <meta name="keywords" content="GSK MEDIAVERSE, YouTube Downloader, Instagram Reel Downloader, MP3 Converter, Video Editor, Audio Studio, Media Converter, 1080p Video, High Quality Audio">
+  <meta name="author" content="GSK Studio - Saikiran Gorle">
+
+  <!-- Open Graph / SEO -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="GSK MEDIAVERSE – All-in-One Video & Audio Studio">
+  <meta property="og:description" content="One Platform. Endless Media Possibilities. High-speed, ad-free video and audio studio.">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&q=80">
+  
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' stop-color='%238b5cf6'/><stop offset='100%' stop-color='%2306b6d4'/></linearGradient></defs><circle cx='50' cy='50' r='46' fill='%2309041a' stroke='url(%23g)' stroke-width='6'/><path d='M38 30 L72 50 L38 70 Z' fill='url(%23g)'/></svg>">
+
+  <!-- Fonts: Space Grotesk & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -14,603 +28,1392 @@
       darkMode: 'class',
       theme: {
         extend: {
-          colors: {
-            brand: {
-              navy: '#0b1120',
-              dark: '#030712',
-              card: 'rgba(15, 23, 42, 0.75)',
-              electric: '#00f0ff',
-              cyan: '#38bdf8',
-              purple: '#a855f7',
-              gold: '#f59e0b',
-              goldHover: '#d97706',
-              green: '#10b981'
-            }
-          },
           fontFamily: {
-            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-            heading: ['"Space Grotesk"', 'sans-serif'],
-            mono: ['"JetBrains Mono"', 'monospace']
+            sans: ['Inter', 'sans-serif'],
+            display: ['Space Grotesk', 'sans-serif'],
+          },
+          colors: {
+            obsidian: '#05020c',
+            void: '#0a0518',
+            deepPurple: '#120926',
+            cardDark: 'rgba(18, 10, 38, 0.65)',
+            cardLight: 'rgba(255, 255, 255, 0.85)',
+            neonViolet: '#8b5cf6',
+            neonCyan: '#06b6d4',
+            neonPink: '#ec4899',
+            neonGreen: '#10b981',
+            accentGlow: '#6366f1'
+          },
+          animation: {
+            'glow-pulse': 'glowPulse 3s ease-in-out infinite',
+            'float': 'float 6s ease-in-out infinite',
+            'spin-slow': 'spin 12s linear infinite',
+            'shimmer': 'shimmer 2.5s linear infinite',
+          },
+          keyframes: {
+            glowPulse: {
+              '0%, 100%': { opacity: '0.4', transform: 'scale(1)' },
+              '50%': { opacity: '0.8', transform: 'scale(1.05)' },
+            },
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-12px)' },
+            },
+            shimmer: {
+              '0%': { backgroundPosition: '-200% 0' },
+              '100%': { backgroundPosition: '200% 0' }
+            }
           }
         }
       }
     }
   </script>
 
-  <!-- Lucide Icons CDN -->
+  <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
-  
-  <!-- Chart.js for Admin Analytics -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Canvas Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
 
-  <!-- Custom Stylesheet -->
-  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    /* Custom CSS Enhancements */
+    body {
+      background-color: #05020c;
+      color: #f1f5f9;
+      overflow-x: hidden;
+      font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    }
+
+    /* Glassmorphism Classes */
+    .glass-panel {
+      background: rgba(18, 10, 38, 0.6);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(139, 92, 246, 0.15);
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.45);
+    }
+
+    .glass-panel:hover {
+      border-color: rgba(139, 92, 246, 0.35);
+      box-shadow: 0 12px 40px 0 rgba(139, 92, 246, 0.15);
+    }
+
+    .glass-card-active {
+      border: 1px solid rgba(6, 182, 212, 0.4) !important;
+      box-shadow: 0 0 25px rgba(6, 182, 212, 0.25) !important;
+    }
+
+    /* Metallic / Neon Gradient Text */
+    .gradient-text {
+      background: linear-gradient(135deg, #c084fc 0%, #a855f7 30%, #38bdf8 70%, #06b6d4 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .gradient-text-gold {
+      background: linear-gradient(135deg, #fcd34d 0%, #f59e0b 50%, #ec4899 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Animated gradient border button */
+    .glow-btn {
+      position: relative;
+      background: linear-gradient(135deg, #7c3aed, #06b6d4);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .glow-btn:hover {
+      box-shadow: 0 0 25px rgba(139, 92, 246, 0.6);
+      transform: translateY(-2px);
+    }
+
+    .glow-btn:active {
+      transform: translateY(0px) scale(0.98);
+    }
+
+    /* Magnetic interactive button feel */
+    .btn-magnetic {
+      transition: transform 0.2s cubic-bezier(0.2, 0, 0.2, 1), box-shadow 0.2s ease;
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #070312;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #2a1b4e;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #6d28d9;
+    }
+
+    /* Progress Ring Animation */
+    .progress-ring__circle {
+      transition: stroke-dashoffset 0.35s ease;
+      transform: rotate(-90deg);
+      transform-origin: 50% 50%;
+    }
+
+    /* Animated background wave grid */
+    .bg-grid-pattern {
+      background-size: 40px 40px;
+      background-image: 
+        linear-gradient(to right, rgba(139, 92, 246, 0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(139, 92, 246, 0.05) 1px, transparent 1px);
+    }
+
+    /* Light Mode Overrides */
+    html:not(.dark) body {
+      background-color: #f8fafc;
+      color: #0f172a;
+    }
+    html:not(.dark) .glass-panel {
+      background: rgba(255, 255, 255, 0.85);
+      border-color: rgba(203, 213, 225, 0.8);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    }
+  </style>
 </head>
-<body class="bg-[#030712] text-slate-100 min-h-screen flex flex-col antialiased selection:bg-cyan-500 selection:text-black">
+<body class="min-h-screen relative font-sans antialiased selection:bg-neonViolet selection:text-white">
 
-  <!-- Background Ambient Glow & Particles -->
-  <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-    <div class="absolute -top-40 -left-40 w-96 h-96 bg-cyan-500/10 rounded-full blur-[128px]"></div>
-    <div class="absolute top-1/3 -right-40 w-96 h-96 bg-purple-600/10 rounded-full blur-[128px]"></div>
-    <div class="absolute -bottom-40 left-1/3 w-96 h-96 bg-amber-500/10 rounded-full blur-[128px]"></div>
-    <div class="absolute inset-0 bg-cyber-grid opacity-30"></div>
-    <canvas id="ambient-canvas" class="w-full h-full opacity-40"></canvas>
-  </div>
+  <!-- Interactive Background Canvas for Particles & Constellations -->
+  <canvas id="particleCanvas" class="fixed inset-0 pointer-events-none z-0 opacity-40"></canvas>
 
-  <!-- Announcement Bar -->
-  <div class="relative z-50 bg-gradient-to-r from-purple-900/80 via-indigo-900/80 to-blue-900/80 border-b border-indigo-500/20 py-2 px-4 text-xs font-medium text-center text-slate-200">
-    <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
-      <div class="flex items-center gap-2 mx-auto">
-        <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-amber-400 text-slate-950 uppercase tracking-wider animate-pulse">Admissions Open</span>
-        <span class="hidden sm:inline">Final Year Batch 2025-2026! Mini, Major & Research Projects with 100% Viva Guidance</span>
-        <span class="sm:hidden">Final Year Projects with 100% Viva Support!</span>
-      </div>
-      <div class="hidden md:flex items-center gap-4 text-xs">
-        <a href="tel:7989010109" class="hover:text-cyan-400 transition flex items-center gap-1">
-          <i data-lucide="phone" class="w-3 h-3 text-cyan-400"></i> 7989010109
-        </a>
-        <span class="text-slate-600">|</span>
-        <a href="mailto:saikirangorle909@gmail.com" class="hover:text-cyan-400 transition flex items-center gap-1">
-          <i data-lucide="mail" class="w-3 h-3 text-amber-400"></i> saikirangorle909@gmail.com
-        </a>
-      </div>
-    </div>
-  </div>
+  <!-- Ambient Glowing Orbs -->
+  <div class="fixed top-[-10%] left-[15%] w-[500px] h-[500px] rounded-full bg-violet-600/15 blur-[120px] pointer-events-none animate-glow-pulse"></div>
+  <div class="fixed top-[40%] right-[-5%] w-[450px] h-[450px] rounded-full bg-cyan-500/15 blur-[120px] pointer-events-none animate-glow-pulse" style="animation-delay: 1.5s;"></div>
+  <div class="fixed bottom-[-10%] left-[25%] w-[600px] h-[600px] rounded-full bg-fuchsia-600/10 blur-[140px] pointer-events-none animate-glow-pulse" style="animation-delay: 3s;"></div>
 
-  <!-- Navigation Bar -->
-  <header class="sticky top-0 z-40 w-full backdrop-blur-xl bg-[#030712]/80 border-b border-slate-800/80 transition-all duration-300">
+  <!-- Ambient Grid Pattern Overlay -->
+  <div class="fixed inset-0 bg-grid-pattern pointer-events-none z-0"></div>
+
+  <!-- TOAST CONTAINER -->
+  <div id="toastContainer" class="fixed top-6 right-6 z-50 flex flex-col gap-3 pointer-events-none"></div>
+
+  <!-- ========================================================================= -->
+  <!-- 1. NAVIGATION BAR -->
+  <!-- ========================================================================= -->
+  <header class="sticky top-0 z-40 w-full backdrop-blur-xl bg-obsidian/75 border-b border-violet-950/40 transition-all duration-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
       
-      <!-- Logo -->
-      <a href="#home" class="flex items-center gap-3 group" onclick="app.navigate('home')">
-        <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-cyan-500 via-indigo-500 to-purple-600 p-[1px] shadow-lg shadow-cyan-500/20 group-hover:shadow-cyan-500/40 transition-all">
-          <div class="w-full h-full bg-[#030712] rounded-[11px] flex items-center justify-center">
-            <i data-lucide="sparkles" class="w-6 h-6 text-cyan-400 group-hover:scale-110 transition-transform"></i>
+      <!-- Logo: GSK MEDIAVERSE -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="relative flex items-center justify-center w-11 h-11 rounded-xl bg-gradient-to-tr from-neonViolet via-indigo-600 to-neonCyan p-[2px] shadow-lg shadow-violet-500/25 group-hover:shadow-cyan-500/40 transition-all duration-300">
+          <div class="w-full h-full bg-obsidian rounded-[10px] flex items-center justify-center">
+            <i data-lucide="play" class="w-5 h-5 text-neonCyan fill-neonCyan group-hover:scale-110 transition-transform"></i>
           </div>
+          <!-- Orbit ring badge -->
+          <span class="absolute -top-1 -right-1 w-3.5 h-3.5 bg-neonPink rounded-full border-2 border-obsidian animate-pulse"></span>
         </div>
         <div class="flex flex-col">
-          <div class="flex items-center gap-1">
-            <span class="text-2xl font-black tracking-tight font-heading text-gradient-cyan">PROJECT<span class="text-white">VERSE</span></span>
-            <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
+          <div class="flex items-center gap-1.5">
+            <span class="font-display font-extrabold text-xl tracking-wider text-white">GSK</span>
+            <span class="font-display font-extrabold text-xl tracking-wider gradient-text">MEDIAVERSE</span>
           </div>
-          <span class="text-[10px] tracking-wider uppercase font-semibold text-amber-400">Your Final Year Partner</span>
+          <span class="text-[10px] tracking-widest text-cyan-400/80 font-medium uppercase">All-in-One Media Studio</span>
         </div>
       </a>
 
-      <!-- Desktop Nav Links -->
-      <nav class="hidden lg:flex items-center gap-1 text-sm font-medium text-slate-300">
-        <a href="#home" onclick="app.navigate('home')" class="nav-link px-3 py-2 rounded-lg hover:text-cyan-400 hover:bg-slate-800/50 transition">Home</a>
-        <a href="#projects" onclick="app.navigate('projects')" class="nav-link px-3 py-2 rounded-lg hover:text-cyan-400 hover:bg-slate-800/50 transition">Projects</a>
-        <a href="#domains" onclick="app.navigate('domains')" class="nav-link px-3 py-2 rounded-lg hover:text-cyan-400 hover:bg-slate-800/50 transition">Domains</a>
-        <a href="#services" onclick="app.navigate('services')" class="nav-link px-3 py-2 rounded-lg hover:text-cyan-400 hover:bg-slate-800/50 transition">Services</a>
-        <a href="#poster" onclick="app.openPosterModal()" class="nav-link px-3 py-2 rounded-lg text-amber-400 hover:text-amber-300 hover:bg-amber-500/10 transition flex items-center gap-1">
-          <i data-lucide="award" class="w-4 h-4"></i> Official Poster
-        </a>
-        <a href="#about" onclick="app.navigate('about')" class="nav-link px-3 py-2 rounded-lg hover:text-cyan-400 hover:bg-slate-800/50 transition">About Us</a>
-        <a href="#contact" onclick="app.navigate('contact')" class="nav-link px-3 py-2 rounded-lg hover:text-cyan-400 hover:bg-slate-800/50 transition">Contact</a>
+      <!-- Desktop Navigation Menu -->
+      <nav class="hidden md:flex items-center gap-1 bg-violet-950/20 p-1.5 rounded-full border border-violet-800/30 backdrop-blur-md">
+        <button onclick="switchTab('youtube-video')" class="nav-item-btn px-4 py-2 rounded-full text-xs font-semibold text-slate-300 hover:text-white hover:bg-violet-900/40 transition-all flex items-center gap-1.5">
+          <i data-lucide="video" class="w-3.5 h-3.5 text-red-400"></i> YouTube Video
+        </button>
+        <button onclick="switchTab('youtube-audio')" class="nav-item-btn px-4 py-2 rounded-full text-xs font-semibold text-slate-300 hover:text-white hover:bg-violet-900/40 transition-all flex items-center gap-1.5">
+          <i data-lucide="music" class="w-3.5 h-3.5 text-purple-400"></i> YouTube Audio
+        </button>
+        <button onclick="switchTab('instagram-video')" class="nav-item-btn px-4 py-2 rounded-full text-xs font-semibold text-slate-300 hover:text-white hover:bg-violet-900/40 transition-all flex items-center gap-1.5">
+          <i data-lucide="instagram" class="w-3.5 h-3.5 text-pink-400"></i> Instagram Reels
+        </button>
+        <button onclick="switchTab('converter')" class="nav-item-btn px-4 py-2 rounded-full text-xs font-semibold text-slate-300 hover:text-white hover:bg-violet-900/40 transition-all flex items-center gap-1.5">
+          <i data-lucide="refresh-cw" class="w-3.5 h-3.5 text-cyan-400"></i> Converter
+        </button>
+        <button onclick="switchTab('editor')" class="nav-item-btn px-4 py-2 rounded-full text-xs font-semibold text-slate-300 hover:text-white hover:bg-violet-900/40 transition-all flex items-center gap-1.5">
+          <i data-lucide="scissors" class="w-3.5 h-3.5 text-emerald-400"></i> Video Editor
+        </button>
+        <button onclick="scrollToSection('historySection')" class="nav-item-btn px-4 py-2 rounded-full text-xs font-semibold text-slate-300 hover:text-white hover:bg-violet-900/40 transition-all flex items-center gap-1.5">
+          <i data-lucide="history" class="w-3.5 h-3.5 text-amber-400"></i> History
+        </button>
       </nav>
 
-      <!-- Right Header Actions -->
-      <div class="hidden sm:flex items-center gap-3">
-        
-        <!-- WhatsApp Quick Link -->
-        <a href="https://wa.me/917989010109?text=Hi%20ProjectVerse%2C%20I%20am%20looking%20for%20a%20final%20year%20project%20for%20my%20college.%20Please%20guide%20me." target="_blank" class="px-3.5 py-2 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/20 text-xs font-semibold flex items-center gap-2 transition">
-          <i data-lucide="message-circle" class="w-4 h-4 text-emerald-400"></i>
-          <span>7989010109</span>
+      <!-- Right Action & Theme Toggle -->
+      <div class="flex items-center gap-3">
+        <!-- Dark/Light Mode Toggle -->
+        <button id="themeToggleBtn" onclick="toggleTheme()" class="p-2.5 rounded-xl border border-violet-800/40 bg-violet-950/30 text-slate-300 hover:text-white hover:border-violet-600 transition-colors" title="Toggle Theme">
+          <i data-lucide="sun" class="w-4 h-4 hidden dark:block text-amber-400"></i>
+          <i data-lucide="moon" class="w-4 h-4 block dark:hidden text-violet-600"></i>
+        </button>
+
+        <!-- Quick Start CTA -->
+        <a href="#studioTools" class="glow-btn px-5 py-2.5 rounded-xl text-xs font-bold text-white tracking-wide uppercase shadow-lg shadow-violet-900/40 hidden sm:inline-flex items-center gap-2">
+          <span>Explore Tools</span>
+          <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
         </a>
 
-        <!-- Student Auth Button -->
-        <button id="nav-student-btn" onclick="app.handleStudentNavAction()" class="px-3.5 py-2 rounded-xl bg-slate-800/70 border border-slate-700/80 text-slate-200 hover:text-white hover:border-slate-500 text-xs font-medium flex items-center gap-1.5 transition">
-          <i data-lucide="user" class="w-3.5 h-3.5 text-cyan-400"></i>
-          <span id="nav-student-text">Student Login</span>
-        </button>
-
-        <!-- Admin Portal Button -->
-        <button onclick="app.navigate('admin')" class="px-3 py-2 rounded-xl bg-purple-950/40 border border-purple-500/30 text-purple-300 hover:bg-purple-900/40 text-xs font-medium flex items-center gap-1.5 transition">
-          <i data-lucide="shield-check" class="w-3.5 h-3.5 text-purple-400"></i>
-          <span id="nav-admin-text">Admin</span>
-        </button>
-
-        <!-- CTA "Submit Enquiry" -->
-        <button onclick="app.openInterestModal()" class="px-4 py-2 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 text-xs font-bold shadow-lg shadow-cyan-500/20 hover:shadow-cyan-500/40 flex items-center gap-1.5 transition-all">
-          <i data-lucide="send" class="w-3.5 h-3.5"></i>
-          <span>Submit Enquiry</span>
+        <!-- Mobile Menu Toggle Button -->
+        <button onclick="toggleMobileMenu()" class="md:hidden p-2.5 rounded-xl border border-violet-800/40 bg-violet-950/30 text-slate-300 hover:text-white">
+          <i data-lucide="menu" class="w-5 h-5"></i>
         </button>
       </div>
-
-      <!-- Mobile Hamburger Button -->
-      <button onclick="app.toggleMobileMenu()" class="lg:hidden p-2 rounded-lg bg-slate-800 text-slate-200 hover:text-white focus:outline-none">
-        <i data-lucide="menu" id="hamburger-icon" class="w-6 h-6"></i>
-      </button>
-
     </div>
 
-    <!-- Mobile Dropdown Menu -->
-    <div id="mobile-menu" class="hidden lg:hidden border-b border-slate-800 bg-[#090d16]/95 backdrop-blur-2xl px-4 pt-3 pb-6 space-y-2">
-      <a href="#home" onclick="app.navigate('home'); app.toggleMobileMenu();" class="block px-3 py-2 rounded-lg text-slate-200 hover:bg-slate-800 font-medium">Home</a>
-      <a href="#projects" onclick="app.navigate('projects'); app.toggleMobileMenu();" class="block px-3 py-2 rounded-lg text-slate-200 hover:bg-slate-800 font-medium">Projects Explorer</a>
-      <a href="#domains" onclick="app.navigate('domains'); app.toggleMobileMenu();" class="block px-3 py-2 rounded-lg text-slate-200 hover:bg-slate-800 font-medium">Project Domains</a>
-      <a href="#services" onclick="app.navigate('services'); app.toggleMobileMenu();" class="block px-3 py-2 rounded-lg text-slate-200 hover:bg-slate-800 font-medium">Our Services</a>
-      <a href="#about" onclick="app.navigate('about'); app.toggleMobileMenu();" class="block px-3 py-2 rounded-lg text-slate-200 hover:bg-slate-800 font-medium">About Us</a>
-      <a href="#contact" onclick="app.navigate('contact'); app.toggleMobileMenu();" class="block px-3 py-2 rounded-lg text-slate-200 hover:bg-slate-800 font-medium">Contact Us</a>
-      <a href="#poster" onclick="app.openPosterModal(); app.toggleMobileMenu();" class="block px-3 py-2 rounded-lg text-amber-400 hover:bg-amber-500/10 font-medium">Official Poster</a>
-      <div class="pt-4 border-t border-slate-800 flex flex-col gap-2">
-        <button onclick="app.openInterestModal(); app.toggleMobileMenu();" class="w-full py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 font-bold text-sm">
-          Submit Project Enquiry
+    <!-- Mobile Slide-Down Menu -->
+    <div id="mobileMenu" class="hidden md:hidden px-4 pt-2 pb-6 bg-obsidian/95 border-b border-violet-900/50 backdrop-blur-2xl">
+      <div class="flex flex-col gap-2">
+        <button onclick="switchTab('youtube-video'); toggleMobileMenu()" class="text-left px-4 py-2.5 rounded-xl text-sm font-medium text-slate-200 hover:bg-violet-900/30 flex items-center gap-3">
+          <i data-lucide="video" class="w-4 h-4 text-red-400"></i> YouTube Video Downloader
         </button>
-        <button onclick="app.navigate('admin'); app.toggleMobileMenu();" class="w-full py-2 rounded-xl bg-purple-900/30 border border-purple-500/40 text-purple-300 font-medium text-sm">
-          Admin Dashboard
+        <button onclick="switchTab('youtube-audio'); toggleMobileMenu()" class="text-left px-4 py-2.5 rounded-xl text-sm font-medium text-slate-200 hover:bg-violet-900/30 flex items-center gap-3">
+          <i data-lucide="music" class="w-4 h-4 text-purple-400"></i> YouTube Audio Converter
         </button>
-        <a href="https://wa.me/917989010109?text=Hi%20ProjectVerse%2C%20I%20am%20interested%20in%20a%20project." target="_blank" class="w-full py-2 rounded-xl bg-emerald-600/20 text-emerald-400 border border-emerald-500/40 font-semibold text-sm flex items-center justify-center gap-2">
-          <i data-lucide="message-circle" class="w-4 h-4"></i> WhatsApp 7989010109
-        </a>
+        <button onclick="switchTab('instagram-video'); toggleMobileMenu()" class="text-left px-4 py-2.5 rounded-xl text-sm font-medium text-slate-200 hover:bg-violet-900/30 flex items-center gap-3">
+          <i data-lucide="instagram" class="w-4 h-4 text-pink-400"></i> Instagram Video Downloader
+        </button>
+        <button onclick="switchTab('instagram-audio'); toggleMobileMenu()" class="text-left px-4 py-2.5 rounded-xl text-sm font-medium text-slate-200 hover:bg-violet-900/30 flex items-center gap-3">
+          <i data-lucide="headphones" class="w-4 h-4 text-cyan-400"></i> Instagram Audio Extractor
+        </button>
+        <button onclick="switchTab('converter'); toggleMobileMenu()" class="text-left px-4 py-2.5 rounded-xl text-sm font-medium text-slate-200 hover:bg-violet-900/30 flex items-center gap-3">
+          <i data-lucide="refresh-cw" class="w-4 h-4 text-emerald-400"></i> Universal Media Converter
+        </button>
+        <button onclick="switchTab('editor'); toggleMobileMenu()" class="text-left px-4 py-2.5 rounded-xl text-sm font-medium text-slate-200 hover:bg-violet-900/30 flex items-center gap-3">
+          <i data-lucide="scissors" class="w-4 h-4 text-amber-400"></i> Video & Audio Editor
+        </button>
+        <button onclick="scrollToSection('historySection'); toggleMobileMenu()" class="text-left px-4 py-2.5 rounded-xl text-sm font-medium text-slate-200 hover:bg-violet-900/30 flex items-center gap-3">
+          <i data-lucide="history" class="w-4 h-4 text-indigo-400"></i> Download History
+        </button>
       </div>
     </div>
   </header>
 
-  <!-- Main Dynamic Router Container -->
-  <main id="app-content" class="relative z-10 flex-grow">
-    <!-- Views will be dynamically injected here by app.js -->
-    <div class="py-24 text-center">
-      <div class="w-12 h-12 border-4 border-cyan-500 border-t-transparent rounded-full animate-spin mx-auto"></div>
-      <p class="mt-4 text-slate-400 font-medium">Loading PROJECTVERSE Experience...</p>
-    </div>
-  </main>
-
-  <!-- Global Footer -->
-  <footer class="relative z-20 bg-[#02050e] border-t border-slate-800/80 pt-16 pb-12 mt-20">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <!-- ========================================================================= -->
+  <!-- 2. ANIMATED HERO SECTION -->
+  <!-- ========================================================================= -->
+  <section class="relative z-10 pt-16 pb-20 px-4 sm:px-6 lg:px-8 text-center overflow-hidden">
+    <div class="max-w-4xl mx-auto flex flex-col items-center">
       
-      <!-- Top Trust Badges Strip (from authentic poster) -->
-      <div class="grid grid-cols-2 md:grid-cols-5 gap-4 pb-12 border-b border-slate-800/80 text-center">
-        <div class="flex flex-col items-center p-3 rounded-xl bg-slate-900/40 border border-slate-800">
-          <i data-lucide="shield-check" class="w-6 h-6 text-cyan-400 mb-2"></i>
-          <span class="text-sm font-bold text-white">Trusted by Students</span>
-          <span class="text-xs text-slate-400">12,000+ Enrolled</span>
-        </div>
-        <div class="flex flex-col items-center p-3 rounded-xl bg-slate-900/40 border border-slate-800">
-          <i data-lucide="zap" class="w-6 h-6 text-amber-400 mb-2"></i>
-          <span class="text-sm font-bold text-white">On-Time Delivery</span>
-          <span class="text-xs text-slate-400">Guaranteed Deadline</span>
-        </div>
-        <div class="flex flex-col items-center p-3 rounded-xl bg-slate-900/40 border border-slate-800">
-          <i data-lucide="file-check" class="w-6 h-6 text-emerald-400 mb-2"></i>
-          <span class="text-sm font-bold text-white">Quality & Documented</span>
-          <span class="text-xs text-slate-400">IEEE + Plagiarism Checked</span>
-        </div>
-        <div class="flex flex-col items-center p-3 rounded-xl bg-slate-900/40 border border-slate-800">
-          <i data-lucide="trophy" class="w-6 h-6 text-purple-400 mb-2"></i>
-          <span class="text-sm font-bold text-white">Higher Marks Assurance</span>
-          <span class="text-xs text-slate-400">Comprehensive Viva Q&A</span>
-        </div>
-        <div class="col-span-2 md:col-span-1 flex flex-col items-center p-3 rounded-xl bg-slate-900/40 border border-slate-800">
-          <i data-lucide="target" class="w-6 h-6 text-rose-400 mb-2"></i>
-          <span class="text-sm font-bold text-white">Your Success</span>
-          <span class="text-xs text-slate-400">Our Priority Always</span>
-        </div>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 py-12">
-        
-        <!-- Brand Info -->
-        <div class="lg:col-span-2 space-y-4">
-          <div class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 to-purple-600 flex items-center justify-center font-bold text-black text-xl">
-              🚀
-            </div>
-            <span class="text-2xl font-black font-heading text-gradient-cyan">PROJECT<span class="text-white">VERSE</span></span>
-          </div>
-          <p class="text-slate-400 text-sm leading-relaxed max-w-sm">
-            "Your Final Year. Our Responsibility. Your Success."<br>
-            Empowering B.Tech, M.Tech, MCA, BCA, and B.Sc/M.Sc students with verified working projects, full documentation, working demonstrations, and live viva coaching.
-          </p>
-          <div class="pt-2 flex flex-col gap-2 text-sm text-slate-300">
-            <div class="flex items-center gap-2">
-              <i data-lucide="phone" class="w-4 h-4 text-cyan-400"></i>
-              <span>Hotline / Call: <a href="tel:7989010109" class="text-white font-semibold hover:text-cyan-400">7989010109</a></span>
-            </div>
-            <div class="flex items-center gap-2">
-              <i data-lucide="message-circle" class="w-4 h-4 text-emerald-400"></i>
-              <span>WhatsApp: <a href="https://wa.me/917989010109" target="_blank" class="text-white font-semibold hover:text-emerald-400">7989010109</a></span>
-            </div>
-            <div class="flex items-center gap-2">
-              <i data-lucide="mail" class="w-4 h-4 text-amber-400"></i>
-              <span>Email: <a href="mailto:saikirangorle909@gmail.com" class="text-white font-semibold hover:text-amber-400">saikirangorle909@gmail.com</a></span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Quick Links -->
-        <div>
-          <h4 class="text-white font-bold text-sm tracking-wider uppercase mb-4 font-heading">Explore</h4>
-          <ul class="space-y-2.5 text-sm text-slate-400">
-            <li><a href="#home" onclick="app.navigate('home')" class="hover:text-cyan-400 transition">Home</a></li>
-            <li><a href="#projects" onclick="app.navigate('projects')" class="hover:text-cyan-400 transition">Projects Catalog</a></li>
-            <li><a href="#domains" onclick="app.navigate('domains')" class="hover:text-cyan-400 transition">Domains & Tech</a></li>
-            <li><a href="#services" onclick="app.navigate('services')" class="hover:text-cyan-400 transition">Viva & Documentation</a></li>
-            <li><a href="#about" onclick="app.navigate('about')" class="hover:text-cyan-400 transition">About Us</a></li>
-            <li><a href="#contact" onclick="app.navigate('contact')" class="hover:text-cyan-400 transition">Contact Project Team</a></li>
-          </ul>
-        </div>
-
-        <!-- Domains Shortlist -->
-        <div>
-          <h4 class="text-white font-bold text-sm tracking-wider uppercase mb-4 font-heading">Trending Domains</h4>
-          <ul class="space-y-2.5 text-sm text-slate-400">
-            <li><a href="#projects" onclick="app.filterByDomain('ai-ml')" class="hover:text-cyan-400 transition">AI & Machine Learning</a></li>
-            <li><a href="#projects" onclick="app.filterByDomain('data-science')" class="hover:text-cyan-400 transition">Data Science & Analytics</a></li>
-            <li><a href="#projects" onclick="app.filterByDomain('iot')" class="hover:text-cyan-400 transition">IoT & Embedded Systems</a></li>
-            <li><a href="#projects" onclick="app.filterByDomain('blockchain')" class="hover:text-cyan-400 transition">Blockchain & Web3</a></li>
-            <li><a href="#projects" onclick="app.filterByDomain('cyber-security')" class="hover:text-cyan-400 transition">Cyber Security & Forensics</a></li>
-            <li><a href="#projects" onclick="app.filterByDomain('cloud-computing')" class="hover:text-cyan-400 transition">Cloud Computing (AWS/GCP)</a></li>
-          </ul>
-        </div>
-
-        <!-- Target Students & Action -->
-        <div>
-          <h4 class="text-white font-bold text-sm tracking-wider uppercase mb-4 font-heading">Target Courses</h4>
-          <p class="text-xs text-slate-400 leading-relaxed mb-4">
-            B.Tech | M.Tech | MCA | BCA | B.Sc | M.Sc<br>
-            Mini Projects | Major Projects | Research
-          </p>
-          <button onclick="app.openInterestModal()" class="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 font-bold text-xs hover:from-cyan-400 hover:to-blue-500 shadow-lg shadow-cyan-500/20 transition">
-            Book Free Consultation
-          </button>
-          <button onclick="app.openPosterModal()" class="w-full mt-2 py-2 px-4 rounded-xl bg-slate-800 text-slate-300 hover:text-white border border-slate-700 text-xs font-medium transition flex items-center justify-center gap-1.5">
-            <i data-lucide="image" class="w-3.5 h-3.5 text-amber-400"></i> View Official Poster
-          </button>
-        </div>
-
-      </div>
-
-      <div class="pt-8 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
-        <p>© 2026 PROJECTVERSE. All Rights Reserved. Built for Students Success.</p>
-        <div class="flex items-center gap-6">
-          <a href="#privacy" onclick="app.navigate('privacy')" class="hover:text-slate-300 transition">Privacy Policy</a>
-          <a href="#terms" onclick="app.navigate('terms')" class="hover:text-slate-300 transition">Terms & Conditions</a>
-          <a href="#admin" onclick="app.navigate('admin')" class="hover:text-purple-400 transition">Admin Portal</a>
-        </div>
-      </div>
-
-    </div>
-  </footer>
-
-  <!-- Floating WhatsApp Beacon -->
-  <div class="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">
-    <!-- Back to top button -->
-    <button id="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="hidden w-10 h-10 rounded-full bg-slate-800/90 border border-slate-700 text-slate-300 hover:text-white hover:bg-slate-700 flex items-center justify-center shadow-lg transition">
-      <i data-lucide="arrow-up" class="w-5 h-5"></i>
-    </button>
-    
-    <!-- WhatsApp Floating Action -->
-    <a href="https://wa.me/917989010109?text=Hi%20ProjectVerse%2C%20I%20am%20interested%20in%20taking%20a%20project%20for%20my%20college.%20Please%20guide%20me." target="_blank" class="wa-floating-btn group relative flex items-center gap-2 p-3 sm:px-4 sm:py-3 rounded-full bg-[#25D366] text-white shadow-2xl hover:scale-105 transition-all duration-300">
-      <div class="w-6 h-6 flex items-center justify-center">
-        <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 fill-current">
-          <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
-        </svg>
-      </div>
-      <span class="hidden sm:inline font-bold text-sm tracking-wide">WhatsApp 7989010109</span>
-      <span class="absolute -top-1 -right-1 w-3.5 h-3.5 bg-amber-400 rounded-full border-2 border-[#030712] animate-ping"></span>
-    </a>
-  </div>
-
-  <!-- Modal Container for Leads (I'm Interested Form) -->
-  <div id="modal-interest" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/80 backdrop-blur-md overflow-y-auto">
-    <div class="relative w-full max-w-2xl bg-[#090d16] border border-cyan-500/30 rounded-2xl shadow-2xl shadow-cyan-500/10 p-6 sm:p-8 my-8 overflow-hidden">
-      <div class="absolute -top-24 -right-24 w-48 h-48 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
-      
-      <!-- Close button -->
-      <button onclick="app.closeInterestModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white p-2 rounded-lg bg-slate-800/50 hover:bg-slate-800 transition">
-        <i data-lucide="x" class="w-5 h-5"></i>
-      </button>
-
-      <!-- Modal Header -->
-      <div class="mb-6">
-        <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 mb-2">
-          🚀 Instant Project Registration & Consultation
+      <!-- Top Glowing Pill Badge -->
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-violet-500/30 bg-violet-950/40 backdrop-blur-md mb-8 animate-float shadow-lg shadow-violet-950/50">
+        <span class="w-2 h-2 rounded-full bg-neonCyan animate-ping"></span>
+        <span class="text-xs font-bold uppercase tracking-wider text-cyan-300">
+          ⚡ NEXT-GEN MEDIA SUITE 3.0 • POWERED BY GSK
         </span>
-        <h3 class="text-2xl font-bold font-heading text-white">Express Your Project Interest</h3>
-        <p class="text-slate-400 text-xs sm:text-sm mt-1">
-          Fill in your details below. Our senior project architect will contact you within 15 minutes with complete code, demo access, and viva explanation details.
+      </div>
+
+      <!-- Main Headline -->
+      <h1 class="text-4xl sm:text-6xl lg:text-7xl font-display font-extrabold tracking-tight leading-[1.1] mb-6">
+        Everything Media. <br/>
+        <span class="gradient-text">One Powerful Studio.</span>
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="text-lg sm:text-xl text-slate-400 max-w-2xl mb-10 font-normal leading-relaxed">
+        Your ultimate destination for video, audio and media tools. Lightning-fast downloads, seamless conversions, studio-grade audio extraction & precision editing in one place.
+      </p>
+
+      <!-- Smart Universal URL Bar -->
+      <div class="w-full max-w-2xl relative mb-8">
+        <div class="glass-panel p-2 rounded-2xl flex flex-col sm:flex-row items-center gap-2 shadow-2xl shadow-violet-950/60 border border-violet-500/20">
+          <div class="flex items-center gap-2 w-full px-3 py-1 flex-1">
+            <i data-lucide="link" class="w-5 h-5 text-neonViolet shrink-0"></i>
+            <input 
+              id="universalUrlInput" 
+              type="text" 
+              placeholder="Paste YouTube or Instagram link here..." 
+              class="w-full bg-transparent border-0 text-white placeholder-slate-500 text-sm focus:ring-0 focus:outline-none"
+              onkeydown="if(event.key==='Enter') handleUniversalAnalyze()"
+            />
+            <button onclick="pasteClipboardTo('universalUrlInput')" class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-violet-900/40 text-violet-300 hover:text-white hover:bg-violet-800/60 transition-colors shrink-0 flex items-center gap-1">
+              <i data-lucide="clipboard" class="w-3 h-3"></i> Paste
+            </button>
+          </div>
+          <button onclick="handleUniversalAnalyze()" class="glow-btn w-full sm:w-auto px-6 py-3 rounded-xl text-sm font-bold text-white flex items-center justify-center gap-2 shrink-0">
+            <span>Process Now</span>
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </button>
+        </div>
+        <p class="text-[11px] text-slate-500 mt-2 flex items-center justify-center gap-1">
+          <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-400"></i>
+          Authorized public content processing • 100% Free • No registration required
         </p>
       </div>
 
-      <!-- Lead Submission Form -->
-      <form id="interest-form" onsubmit="app.handleInterestSubmit(event)" class="space-y-4">
-        
-        <!-- Pre-selected Project Indicator -->
-        <div id="modal-project-badge" class="p-3 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-between">
-          <div>
-            <span class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Target Project:</span>
-            <div id="modal-project-title" class="text-sm font-bold text-cyan-300">General Consultation (All Domains)</div>
-          </div>
-          <span id="modal-project-domain" class="text-xs px-2.5 py-1 rounded-md bg-purple-500/20 text-purple-300 font-medium border border-purple-500/30">
-            Multi-Domain
-          </span>
+      <!-- Feature Badges Ticker -->
+      <div class="flex flex-wrap items-center justify-center gap-4 text-xs font-medium text-slate-400">
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-violet-950/30 border border-violet-800/30">
+          <i data-lucide="zap" class="w-3.5 h-3.5 text-amber-400"></i> Ultra-Fast Speed
+        </span>
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-violet-950/30 border border-violet-800/30">
+          <i data-lucide="monitor" class="w-3.5 h-3.5 text-cyan-400"></i> 1080p Full HD
+        </span>
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-violet-950/30 border border-violet-800/30">
+          <i data-lucide="disc" class="w-3.5 h-3.5 text-neonPink"></i> 320kbps Audio
+        </span>
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-violet-950/30 border border-violet-800/30">
+          <i data-lucide="lock" class="w-3.5 h-3.5 text-emerald-400"></i> 100% Safe & Private
+        </span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- 3. STUDIO NAVIGATION TABS (FOUR CORE DOWNLOADERS + UTILITIES) -->
+  <!-- ========================================================================= -->
+  <main id="studioTools" class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
+    
+    <!-- Tab Selectors Bar -->
+    <div class="flex items-center justify-start sm:justify-center overflow-x-auto pb-4 gap-2 mb-10 no-scrollbar">
+      <button onclick="switchTab('youtube-video')" id="tabBtn-youtube-video" class="tab-button active-tab px-5 py-3 rounded-2xl text-xs sm:text-sm font-bold tracking-wide flex items-center gap-2.5 transition-all shrink-0 glass-panel border border-violet-500/40 text-white shadow-lg shadow-violet-950/60">
+        <div class="w-7 h-7 rounded-lg bg-red-500/20 text-red-400 flex items-center justify-center">
+          <i data-lucide="youtube" class="w-4 h-4"></i>
         </div>
-        <input type="hidden" id="form-project-id" name="project_id" value="">
-        <input type="hidden" id="form-project-title" name="project_title" value="General Project Inquiry">
-        <input type="hidden" id="form-domain-name" name="domain_name" value="Multi-Domain">
-        <input type="hidden" id="form-category-name" name="category_name" value="Major Projects">
+        <span>YouTube Video</span>
+      </button>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <!-- Student Name -->
-          <div>
-            <label class="block text-xs font-semibold text-slate-300 mb-1">Student Full Name *</label>
-            <input type="text" id="form-student-name" required placeholder="e.g. Sravan Reddy" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900/90 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-cyan-400 transition">
-          </div>
-
-          <!-- Mobile Number -->
-          <div>
-            <label class="block text-xs font-semibold text-slate-300 mb-1">WhatsApp / Mobile Number *</label>
-            <input type="tel" id="form-mobile" required pattern="[0-9]{10}" placeholder="10-digit mobile (e.g. 9848012345)" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900/90 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-cyan-400 transition">
-          </div>
-
-          <!-- Email -->
-          <div>
-            <label class="block text-xs font-semibold text-slate-300 mb-1">Email Address *</label>
-            <input type="email" id="form-email" required placeholder="e.g. student@college.edu" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900/90 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-cyan-400 transition">
-          </div>
-
-          <!-- City -->
-          <div>
-            <label class="block text-xs font-semibold text-slate-300 mb-1">City / Location *</label>
-            <input type="text" id="form-city" required placeholder="e.g. Hyderabad, Chennai, Bangalore" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900/90 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-cyan-400 transition">
-          </div>
-
-          <!-- College Name -->
-          <div class="sm:col-span-2">
-            <label class="block text-xs font-semibold text-slate-300 mb-1">College / University Name *</label>
-            <input type="text" id="form-college" required placeholder="e.g. JNTU Hyderabad / SRM / VIT / CBIT" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900/90 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-cyan-400 transition">
-          </div>
-
-          <!-- Course -->
-          <div>
-            <label class="block text-xs font-semibold text-slate-300 mb-1">Degree Course *</label>
-            <select id="form-course" required class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900/90 border border-slate-700 text-white text-sm focus:outline-none focus:border-cyan-400 transition">
-              <option value="B.Tech">B.Tech</option>
-              <option value="M.Tech">M.Tech</option>
-              <option value="MCA">MCA</option>
-              <option value="BCA">BCA</option>
-              <option value="B.Sc">B.Sc Computer Science</option>
-              <option value="M.Sc">M.Sc Computer Science</option>
-              <option value="Diploma">Diploma Engineering</option>
-              <option value="Other">Other</option>
-            </select>
-          </div>
-
-          <!-- Department -->
-          <div>
-            <label class="block text-xs font-semibold text-slate-300 mb-1">Department / Branch *</label>
-            <select id="form-department" required class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900/90 border border-slate-700 text-white text-sm focus:outline-none focus:border-cyan-400 transition">
-              <option value="Computer Science & Engineering (CSE)">CSE</option>
-              <option value="Information Technology (IT)">IT</option>
-              <option value="AI & Machine Learning (AI/ML)">AI / ML</option>
-              <option value="Data Science (DS)">Data Science</option>
-              <option value="Electronics & Communication (ECE)">ECE</option>
-              <option value="Electrical & Electronics (EEE)">EEE</option>
-              <option value="Mechanical / Civil">Mechanical / Civil</option>
-              <option value="Cyber Security / IoT">Cyber Security / IoT</option>
-            </select>
-          </div>
+      <button onclick="switchTab('youtube-audio')" id="tabBtn-youtube-audio" class="tab-button px-5 py-3 rounded-2xl text-xs sm:text-sm font-bold tracking-wide flex items-center gap-2.5 transition-all shrink-0 glass-panel border border-violet-800/20 text-slate-400 hover:text-white">
+        <div class="w-7 h-7 rounded-lg bg-purple-500/20 text-purple-400 flex items-center justify-center">
+          <i data-lucide="music" class="w-4 h-4"></i>
         </div>
+        <span>YouTube Audio</span>
+      </button>
 
-        <!-- Optional additional fields -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <button onclick="switchTab('instagram-video')" id="tabBtn-instagram-video" class="tab-button px-5 py-3 rounded-2xl text-xs sm:text-sm font-bold tracking-wide flex items-center gap-2.5 transition-all shrink-0 glass-panel border border-violet-800/20 text-slate-400 hover:text-white">
+        <div class="w-7 h-7 rounded-lg bg-pink-500/20 text-pink-400 flex items-center justify-center">
+          <i data-lucide="instagram" class="w-4 h-4"></i>
+        </div>
+        <span>Instagram Reels</span>
+      </button>
+
+      <button onclick="switchTab('instagram-audio')" id="tabBtn-instagram-audio" class="tab-button px-5 py-3 rounded-2xl text-xs sm:text-sm font-bold tracking-wide flex items-center gap-2.5 transition-all shrink-0 glass-panel border border-violet-800/20 text-slate-400 hover:text-white">
+        <div class="w-7 h-7 rounded-lg bg-cyan-500/20 text-cyan-400 flex items-center justify-center">
+          <i data-lucide="headphones" class="w-4 h-4"></i>
+        </div>
+        <span>Instagram Audio</span>
+      </button>
+
+      <button onclick="switchTab('converter')" id="tabBtn-converter" class="tab-button px-5 py-3 rounded-2xl text-xs sm:text-sm font-bold tracking-wide flex items-center gap-2.5 transition-all shrink-0 glass-panel border border-violet-800/20 text-slate-400 hover:text-white">
+        <div class="w-7 h-7 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center">
+          <i data-lucide="refresh-cw" class="w-4 h-4"></i>
+        </div>
+        <span>Universal Converter</span>
+      </button>
+
+      <button onclick="switchTab('editor')" id="tabBtn-editor" class="tab-button px-5 py-3 rounded-2xl text-xs sm:text-sm font-bold tracking-wide flex items-center gap-2.5 transition-all shrink-0 glass-panel border border-violet-800/20 text-slate-400 hover:text-white">
+        <div class="w-7 h-7 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center">
+          <i data-lucide="scissors" class="w-4 h-4"></i>
+        </div>
+        <span>Video Editor</span>
+      </button>
+
+      <button onclick="switchTab('audio-studio')" id="tabBtn-audio-studio" class="tab-button px-5 py-3 rounded-2xl text-xs sm:text-sm font-bold tracking-wide flex items-center gap-2.5 transition-all shrink-0 glass-panel border border-violet-800/20 text-slate-400 hover:text-white">
+        <div class="w-7 h-7 rounded-lg bg-indigo-500/20 text-indigo-400 flex items-center justify-center">
+          <i data-lucide="sliders" class="w-4 h-4"></i>
+        </div>
+        <span>Audio Studio</span>
+      </button>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- TOOL 01: YOUTUBE VIDEO DOWNLOADER TAB -->
+    <!-- ========================================================================= -->
+    <div id="tab-youtube-video" class="tool-tab-content block">
+      <div class="glass-panel p-6 sm:p-10 rounded-3xl relative overflow-hidden">
+        <!-- Glow accents -->
+        <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-red-600/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-8">
           <div>
-            <label class="block text-xs font-semibold text-slate-300 mb-1">Preferred Technologies (Optional)</label>
-            <input type="text" id="form-pref-tech" placeholder="e.g. Python, React, PyTorch, ESP32" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900/90 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-cyan-400 transition">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-red-500/15 border border-red-500/30 text-red-400 text-xs font-bold uppercase tracking-wider mb-2">
+              <i data-lucide="youtube" class="w-3.5 h-3.5"></i> Tool 01 – YouTube Video Downloader
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-display font-extrabold text-white">Download YouTube Videos in High Definition</h2>
+            <p class="text-sm text-slate-400 mt-1">Download authorized YouTube videos up to 1080p Full HD with clear audio streams.</p>
           </div>
-          <div>
-            <label class="block text-xs font-semibold text-slate-300 mb-1">Project Category</label>
-            <select id="form-category-select" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900/90 border border-slate-700 text-white text-sm focus:outline-none focus:border-cyan-400 transition">
-              <option value="Major Projects">Major Projects (Final Year)</option>
-              <option value="Mini Projects">Mini Projects</option>
-              <option value="Research Projects">Research Projects (IEEE / Scopus)</option>
-              <option value="Industry-Level Projects">Industry-Level Projects</option>
-            </select>
-          </div>
-        </div>
-
-        <div>
-          <label class="block text-xs font-semibold text-slate-300 mb-1">Custom Requirements / Notes (Optional)</label>
-          <textarea id="form-message" rows="2" placeholder="e.g. We are a batch of 4 students, need PPT + documentation ready by March 15th." class="w-full px-3.5 py-2 rounded-xl bg-slate-900/90 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-cyan-400 transition"></textarea>
-        </div>
-
-        <!-- Consent Checkbox -->
-        <div class="flex items-start gap-2 pt-1">
-          <input type="checkbox" id="form-consent" required checked class="mt-1 rounded bg-slate-800 border-slate-700 text-cyan-500 focus:ring-0">
-          <label for="form-consent" class="text-xs text-slate-400">
-            I agree to receive project demonstration details and guidance via WhatsApp or phone call at 7989010109. Your personal information is 100% confidential.
-          </label>
-        </div>
-
-        <!-- Submit Button -->
-        <div class="pt-2">
-          <button type="submit" id="form-submit-btn" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-amber-400 via-amber-500 to-yellow-500 text-slate-950 font-black text-sm uppercase tracking-wider shadow-lg shadow-amber-500/20 hover:shadow-amber-500/40 hover:brightness-110 flex items-center justify-center gap-2 transition-all">
-            <i data-lucide="send" class="w-4 h-4"></i>
-            <span>Submit Project Interest Now</span>
+          <button onclick="loadSample('yt')" class="text-xs font-semibold px-3 py-1.5 rounded-xl border border-violet-700/40 text-violet-300 hover:bg-violet-900/30 transition-colors flex items-center gap-1.5">
+            <i data-lucide="sparkles" class="w-3.5 h-3.5 text-amber-400"></i> Try Sample Video
           </button>
         </div>
 
-      </form>
+        <!-- Input Box -->
+        <div class="bg-obsidian/80 p-2 sm:p-3 rounded-2xl border border-violet-800/30 flex flex-col sm:flex-row items-center gap-3 mb-6 shadow-inner">
+          <div class="flex items-center gap-3 w-full px-3 py-2 flex-1">
+            <i data-lucide="video" class="w-5 h-5 text-red-400 shrink-0"></i>
+            <input 
+              id="ytVideoInput" 
+              type="text" 
+              placeholder="https://www.youtube.com/watch?v=... or https://youtu.be/..." 
+              class="w-full bg-transparent border-0 text-white placeholder-slate-500 text-sm focus:outline-none"
+              onkeydown="if(event.key==='Enter') fetchMediaInfo('ytVideo')"
+            />
+            <button onclick="pasteClipboardTo('ytVideoInput')" class="text-xs font-semibold px-3 py-1.5 rounded-lg bg-violet-900/40 text-violet-300 hover:text-white transition-colors flex items-center gap-1 shrink-0">
+              <i data-lucide="clipboard" class="w-3.5 h-3.5"></i> Paste
+            </button>
+          </div>
+          <button id="ytVideoFetchBtn" onclick="fetchMediaInfo('ytVideo')" class="glow-btn w-full sm:w-auto px-7 py-3 rounded-xl text-sm font-bold text-white flex items-center justify-center gap-2 shrink-0">
+            <span>Analyze Video</span>
+            <i data-lucide="search" class="w-4 h-4"></i>
+          </button>
+        </div>
 
-      <!-- Success Confirmation View -->
-      <div id="interest-success" class="hidden text-center py-6 space-y-4">
-        <div class="w-16 h-16 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 flex items-center justify-center mx-auto text-3xl">
-          ✓
+        <!-- Result Metadata & Quality Selector Container -->
+        <div id="ytVideoResult" class="hidden mt-8 transition-all duration-300">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start bg-deepPurple/40 p-6 rounded-2xl border border-violet-800/30">
+            <!-- Thumbnail & Meta Column -->
+            <div class="lg:col-span-5 flex flex-col gap-3">
+              <div class="relative rounded-2xl overflow-hidden aspect-video border border-violet-700/30 shadow-2xl group">
+                <img id="ytVideoThumb" src="" alt="Video Thumbnail" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"/>
+                <div class="absolute bottom-2 right-2 px-2 py-0.5 rounded bg-black/80 backdrop-blur-md text-white text-[11px] font-semibold" id="ytVideoDuration">
+                  03:45
+                </div>
+                <div class="absolute top-2 left-2 px-2 py-0.5 rounded bg-red-600/90 text-white text-[10px] font-bold uppercase tracking-wider">
+                  YouTube HD
+                </div>
+              </div>
+              <h3 id="ytVideoTitle" class="text-base font-bold text-white line-clamp-2"></h3>
+              <div class="flex items-center justify-between text-xs text-slate-400">
+                <span id="ytVideoChannel" class="flex items-center gap-1 text-slate-300">
+                  <i data-lucide="user" class="w-3.5 h-3.5 text-cyan-400"></i> Channel Name
+                </span>
+                <span id="ytVideoViews" class="text-slate-400">1.2M views</span>
+              </div>
+            </div>
+
+            <!-- Quality Selection & Download Column -->
+            <div class="lg:col-span-7 flex flex-col justify-between h-full">
+              <div>
+                <label class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3 block flex items-center gap-1.5">
+                  <i data-lucide="layers" class="w-3.5 h-3.5 text-neonCyan"></i> Select Video Resolution:
+                </label>
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5 mb-6" id="ytVideoQualities">
+                  <!-- Injected dynamically -->
+                </div>
+              </div>
+
+              <!-- Download Button & Progress Container -->
+              <div class="pt-4 border-t border-violet-900/40">
+                <div id="ytVideoProgressBox" class="hidden mb-4">
+                  <div class="flex items-center justify-between text-xs font-semibold mb-1.5">
+                    <span id="ytVideoProgressStatus" class="text-cyan-300 flex items-center gap-2">
+                      <i data-lucide="loader" class="w-3.5 h-3.5 animate-spin"></i> Multiplexing video streams...
+                    </span>
+                    <span id="ytVideoProgressPercent" class="text-neonViolet font-bold">45%</span>
+                  </div>
+                  <div class="w-full h-2.5 bg-obsidian rounded-full overflow-hidden p-0.5 border border-violet-900/50">
+                    <div id="ytVideoProgressBar" class="h-full bg-gradient-to-r from-neonViolet via-indigo-500 to-neonCyan rounded-full transition-all duration-300" style="width: 45%;"></div>
+                  </div>
+                </div>
+
+                <div class="flex flex-col sm:flex-row items-center gap-3">
+                  <button id="ytVideoDownloadBtn" onclick="executeDownload('ytVideo')" class="glow-btn w-full sm:flex-1 py-3.5 rounded-xl text-sm font-bold text-white flex items-center justify-center gap-2 shadow-xl shadow-cyan-950/40">
+                    <i data-lucide="download" class="w-4 h-4"></i>
+                    <span id="ytVideoDownloadBtnText">Download Video Now</span>
+                  </button>
+                  <button onclick="openQrModal('ytVideo')" class="w-full sm:w-auto px-4 py-3.5 rounded-xl border border-violet-700/50 hover:bg-violet-900/30 text-slate-300 hover:text-white transition-colors flex items-center justify-center gap-2" title="Generate QR Code">
+                    <i data-lucide="qr-code" class="w-4 h-4 text-cyan-400"></i>
+                    <span class="sm:hidden text-xs font-semibold">QR Code</span>
+                  </button>
+                </div>
+
+                <p class="text-[11px] text-slate-400 mt-3 flex items-center gap-1.5">
+                  <i data-lucide="smartphone" class="w-3.5 h-3.5 text-neonGreen"></i>
+                  Downloaded files will be saved in your device's Downloads folder or Gallery.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
+
+      </div>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- TOOL 02: YOUTUBE AUDIO CONVERTER TAB -->
+    <!-- ========================================================================= -->
+    <div id="tab-youtube-audio" class="tool-tab-content hidden">
+      <div class="glass-panel p-6 sm:p-10 rounded-3xl relative overflow-hidden">
+        <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-purple-600/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-8">
+          <div>
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-purple-500/15 border border-purple-500/30 text-purple-400 text-xs font-bold uppercase tracking-wider mb-2">
+              <i data-lucide="music" class="w-3.5 h-3.5"></i> Tool 02 – YouTube Audio Converter
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-display font-extrabold text-white">Convert YouTube Media into Studio Audio</h2>
+            <p class="text-sm text-slate-400 mt-1">Extract high-fidelity MP3, WAV, AAC, and M4A audio tracks with built-in preview player.</p>
+          </div>
+          <button onclick="loadSample('yt-audio')" class="text-xs font-semibold px-3 py-1.5 rounded-xl border border-violet-700/40 text-violet-300 hover:bg-violet-900/30 transition-colors flex items-center gap-1.5">
+            <i data-lucide="sparkles" class="w-3.5 h-3.5 text-amber-400"></i> Try Sample Audio
+          </button>
+        </div>
+
+        <!-- Input Box -->
+        <div class="bg-obsidian/80 p-2 sm:p-3 rounded-2xl border border-violet-800/30 flex flex-col sm:flex-row items-center gap-3 mb-6 shadow-inner">
+          <div class="flex items-center gap-3 w-full px-3 py-2 flex-1">
+            <i data-lucide="headphones" class="w-5 h-5 text-purple-400 shrink-0"></i>
+            <input 
+              id="ytAudioInput" 
+              type="text" 
+              placeholder="Paste YouTube video or music link here..." 
+              class="w-full bg-transparent border-0 text-white placeholder-slate-500 text-sm focus:outline-none"
+              onkeydown="if(event.key==='Enter') fetchMediaInfo('ytAudio')"
+            />
+            <button onclick="pasteClipboardTo('ytAudioInput')" class="text-xs font-semibold px-3 py-1.5 rounded-lg bg-violet-900/40 text-violet-300 hover:text-white transition-colors flex items-center gap-1 shrink-0">
+              <i data-lucide="clipboard" class="w-3.5 h-3.5"></i> Paste
+            </button>
+          </div>
+          <button id="ytAudioFetchBtn" onclick="fetchMediaInfo('ytAudio')" class="glow-btn w-full sm:w-auto px-7 py-3 rounded-xl text-sm font-bold text-white flex items-center justify-center gap-2 shrink-0">
+            <span>Extract Audio</span>
+            <i data-lucide="sliders" class="w-4 h-4"></i>
+          </button>
+        </div>
+
+        <!-- Result Container -->
+        <div id="ytAudioResult" class="hidden mt-8 transition-all duration-300">
+          <div class="bg-deepPurple/40 p-6 rounded-2xl border border-violet-800/30 flex flex-col gap-6">
+            
+            <div class="flex flex-col sm:flex-row items-start sm:items-center gap-5">
+              <img id="ytAudioThumb" src="" alt="Audio Thumbnail" class="w-24 h-24 rounded-2xl object-cover border border-violet-700/40 shadow-xl shrink-0"/>
+              <div class="flex-1">
+                <span class="text-[10px] font-bold uppercase tracking-wider text-purple-400 bg-purple-950/60 px-2.5 py-0.5 rounded-full border border-purple-800/40">Studio Master</span>
+                <h3 id="ytAudioTitle" class="text-lg font-bold text-white mt-1"></h3>
+                <p id="ytAudioChannel" class="text-xs text-slate-400 mt-0.5"></p>
+                <div class="flex items-center gap-4 text-xs text-slate-400 mt-2">
+                  <span id="ytAudioDuration"><i data-lucide="clock" class="w-3 h-3 inline text-cyan-400 mr-1"></i> 03:25</span>
+                  <span><i data-lucide="volume-2" class="w-3 h-3 inline text-emerald-400 mr-1"></i> Stereo 44.1kHz</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Built-in Audio Player with Dynamic Canvas Waveform -->
+            <div class="bg-obsidian/90 p-4 rounded-xl border border-violet-900/40 flex flex-col gap-3">
+              <div class="flex items-center justify-between text-xs text-slate-400">
+                <span class="font-semibold text-slate-300 flex items-center gap-1.5">
+                  <i data-lucide="activity" class="w-4 h-4 text-cyan-400"></i> Audio Stream Preview
+                </span>
+                <span id="ytAudioPlayerTime" class="font-mono text-cyan-400">00:00 / 03:25</span>
+              </div>
+
+              <!-- Animated Waveform Canvas -->
+              <canvas id="ytAudioWaveform" class="w-full h-14 rounded-lg bg-violet-950/20"></canvas>
+
+              <div class="flex items-center gap-4">
+                <button id="ytAudioPlayPauseBtn" onclick="toggleYtAudioPlayback()" class="w-10 h-10 rounded-full bg-gradient-to-r from-neonViolet to-neonCyan flex items-center justify-center text-white shadow-lg shadow-violet-900/40 hover:scale-105 transition-transform">
+                  <i id="ytAudioPlayIcon" data-lucide="play" class="w-4 h-4 fill-white ml-0.5"></i>
+                </button>
+                <input id="ytAudioSeekbar" type="range" min="0" max="100" value="0" class="flex-1 accent-neonViolet cursor-pointer" oninput="handleYtAudioSeek(this.value)"/>
+                <div class="flex items-center gap-1.5 text-slate-400">
+                  <i data-lucide="volume-2" class="w-4 h-4 text-slate-400"></i>
+                  <input id="ytAudioVolume" type="range" min="0" max="1" step="0.05" value="0.8" class="w-16 accent-neonCyan cursor-pointer" oninput="handleYtAudioVolume(this.value)"/>
+                </div>
+              </div>
+            </div>
+
+            <!-- Format & Bitrate Selectors -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2 block">Audio Format</label>
+                <div class="grid grid-cols-4 gap-2">
+                  <button onclick="setAudioFormat('mp3')" class="audio-fmt-btn active-fmt px-3 py-2 rounded-xl text-xs font-bold border border-violet-500 bg-violet-900/40 text-white" data-fmt="mp3">MP3</button>
+                  <button onclick="setAudioFormat('wav')" class="audio-fmt-btn px-3 py-2 rounded-xl text-xs font-bold border border-violet-800/30 bg-obsidian text-slate-400 hover:text-white" data-fmt="wav">WAV</button>
+                  <button onclick="setAudioFormat('aac')" class="audio-fmt-btn px-3 py-2 rounded-xl text-xs font-bold border border-violet-800/30 bg-obsidian text-slate-400 hover:text-white" data-fmt="aac">AAC</button>
+                  <button onclick="setAudioFormat('m4a')" class="audio-fmt-btn px-3 py-2 rounded-xl text-xs font-bold border border-violet-800/30 bg-obsidian text-slate-400 hover:text-white" data-fmt="m4a">M4A</button>
+                </div>
+              </div>
+
+              <div>
+                <label class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2 block">Bitrate Quality</label>
+                <div class="grid grid-cols-4 gap-2">
+                  <button onclick="setAudioBitrate('320k')" class="audio-br-btn active-br px-3 py-2 rounded-xl text-xs font-bold border border-cyan-500 bg-cyan-950/40 text-cyan-300" data-br="320k">320k</button>
+                  <button onclick="setAudioBitrate('256k')" class="audio-br-btn px-3 py-2 rounded-xl text-xs font-bold border border-violet-800/30 bg-obsidian text-slate-400 hover:text-white" data-br="256k">256k</button>
+                  <button onclick="setAudioBitrate('192k')" class="audio-br-btn px-3 py-2 rounded-xl text-xs font-bold border border-violet-800/30 bg-obsidian text-slate-400 hover:text-white" data-br="192k">192k</button>
+                  <button onclick="setAudioBitrate('128k')" class="audio-br-btn px-3 py-2 rounded-xl text-xs font-bold border border-violet-800/30 bg-obsidian text-slate-400 hover:text-white" data-br="128k">128k</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Download Action -->
+            <div class="pt-4 border-t border-violet-900/40 flex flex-col sm:flex-row items-center gap-3">
+              <button id="ytAudioDownloadBtn" onclick="executeDownload('ytAudio')" class="glow-btn w-full sm:flex-1 py-3.5 rounded-xl text-sm font-bold text-white flex items-center justify-center gap-2">
+                <i data-lucide="download" class="w-4 h-4"></i>
+                <span id="ytAudioDownloadBtnText">Download Converted Audio</span>
+              </button>
+              <button onclick="openQrModal('ytAudio')" class="w-full sm:w-auto px-4 py-3.5 rounded-xl border border-violet-700/50 hover:bg-violet-900/30 text-slate-300 hover:text-white transition-colors flex items-center justify-center gap-2">
+                <i data-lucide="qr-code" class="w-4 h-4 text-cyan-400"></i>
+              </button>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- TOOL 03: INSTAGRAM VIDEO DOWNLOADER TAB -->
+    <!-- ========================================================================= -->
+    <div id="tab-instagram-video" class="tool-tab-content hidden">
+      <div class="glass-panel p-6 sm:p-10 rounded-3xl relative overflow-hidden">
+        <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-pink-600/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-8">
+          <div>
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-pink-500/15 border border-pink-500/30 text-pink-400 text-xs font-bold uppercase tracking-wider mb-2">
+              <i data-lucide="instagram" class="w-3.5 h-3.5"></i> Tool 03 – Instagram Video Downloader
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-display font-extrabold text-white">Download Instagram Reels, Videos & Stories</h2>
+            <p class="text-sm text-slate-400 mt-1">Easily grab authorized public reels and videos in optimal HD quality.</p>
+          </div>
+          <button onclick="loadSample('ig')" class="text-xs font-semibold px-3 py-1.5 rounded-xl border border-violet-700/40 text-violet-300 hover:bg-violet-900/30 transition-colors flex items-center gap-1.5">
+            <i data-lucide="sparkles" class="w-3.5 h-3.5 text-amber-400"></i> Try Sample Reel
+          </button>
+        </div>
+
+        <!-- Input Box -->
+        <div class="bg-obsidian/80 p-2 sm:p-3 rounded-2xl border border-violet-800/30 flex flex-col sm:flex-row items-center gap-3 mb-6 shadow-inner">
+          <div class="flex items-center gap-3 w-full px-3 py-2 flex-1">
+            <i data-lucide="instagram" class="w-5 h-5 text-pink-400 shrink-0"></i>
+            <input 
+              id="igVideoInput" 
+              type="text" 
+              placeholder="https://www.instagram.com/reel/... or /p/..." 
+              class="w-full bg-transparent border-0 text-white placeholder-slate-500 text-sm focus:outline-none"
+              onkeydown="if(event.key==='Enter') fetchMediaInfo('igVideo')"
+            />
+            <button onclick="pasteClipboardTo('igVideoInput')" class="text-xs font-semibold px-3 py-1.5 rounded-lg bg-violet-900/40 text-violet-300 hover:text-white transition-colors flex items-center gap-1 shrink-0">
+              <i data-lucide="clipboard" class="w-3.5 h-3.5"></i> Paste
+            </button>
+          </div>
+          <button id="igVideoFetchBtn" onclick="fetchMediaInfo('igVideo')" class="glow-btn w-full sm:w-auto px-7 py-3 rounded-xl text-sm font-bold text-white flex items-center justify-center gap-2 shrink-0">
+            <span>Find Reel</span>
+            <i data-lucide="search" class="w-4 h-4"></i>
+          </button>
+        </div>
+
+        <!-- Result Container -->
+        <div id="igVideoResult" class="hidden mt-8 transition-all duration-300">
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center bg-deepPurple/40 p-6 rounded-2xl border border-violet-800/30">
+            <div class="md:col-span-5 flex justify-center">
+              <div class="relative w-52 rounded-2xl overflow-hidden aspect-[9/16] border border-pink-500/30 shadow-2xl group">
+                <img id="igVideoThumb" src="" alt="Instagram Reel" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-3">
+                  <span id="igVideoAuthor" class="text-xs font-bold text-white">@instagram_user</span>
+                  <span class="text-[10px] text-pink-300">Public Reel HD</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="md:col-span-7 flex flex-col justify-between">
+              <div>
+                <span class="text-[10px] font-bold uppercase tracking-wider text-pink-400 bg-pink-950/60 px-2.5 py-0.5 rounded-full border border-pink-800/40">Verified Reel Media</span>
+                <h3 id="igVideoTitle" class="text-xl font-bold text-white mt-2">Instagram Reel Video</h3>
+                <p class="text-xs text-slate-400 mt-1">Available in maximum supported resolution with preserved audio fidelity.</p>
+
+                <div class="grid grid-cols-2 gap-3 mt-6">
+                  <div class="p-3 rounded-xl bg-obsidian/70 border border-violet-800/40 flex items-center justify-between">
+                    <div>
+                      <div class="text-xs font-bold text-white">Original HD</div>
+                      <div class="text-[10px] text-slate-400">1080p MP4 • High Bitrate</div>
+                    </div>
+                    <i data-lucide="check-circle" class="w-4 h-4 text-emerald-400"></i>
+                  </div>
+                  <div class="p-3 rounded-xl bg-obsidian/70 border border-violet-800/40 flex items-center justify-between">
+                    <div>
+                      <div class="text-xs font-bold text-white">Mobile 720p</div>
+                      <div class="text-[10px] text-slate-400">Optimized for Storage</div>
+                    </div>
+                    <i data-lucide="smartphone" class="w-4 h-4 text-cyan-400"></i>
+                  </div>
+                </div>
+              </div>
+
+              <div class="pt-6 mt-6 border-t border-violet-900/40 flex flex-col sm:flex-row items-center gap-3">
+                <button id="igVideoDownloadBtn" onclick="executeDownload('igVideo')" class="glow-btn w-full sm:flex-1 py-3.5 rounded-xl text-sm font-bold text-white flex items-center justify-center gap-2">
+                  <i data-lucide="download" class="w-4 h-4"></i>
+                  <span>Download Instagram Video</span>
+                </button>
+                <button onclick="openQrModal('igVideo')" class="w-full sm:w-auto px-4 py-3.5 rounded-xl border border-violet-700/50 hover:bg-violet-900/30 text-slate-300 hover:text-white transition-colors flex items-center justify-center gap-2">
+                  <i data-lucide="qr-code" class="w-4 h-4 text-cyan-400"></i>
+                </button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- TOOL 04: INSTAGRAM AUDIO EXTRACTOR TAB -->
+    <!-- ========================================================================= -->
+    <div id="tab-instagram-audio" class="tool-tab-content hidden">
+      <div class="glass-panel p-6 sm:p-10 rounded-3xl relative overflow-hidden">
+        <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-cyan-600/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-8">
+          <div>
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-cyan-500/15 border border-cyan-500/30 text-cyan-400 text-xs font-bold uppercase tracking-wider mb-2">
+              <i data-lucide="headphones" class="w-3.5 h-3.5"></i> Tool 04 – Instagram Audio Extractor
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-display font-extrabold text-white">Extract Trending Instagram Audio & Sounds</h2>
+            <p class="text-sm text-slate-400 mt-1">Rip background audio, trending tracks, and voiceovers into MP3, WAV, or M4A.</p>
+          </div>
+          <button onclick="loadSample('ig')" class="text-xs font-semibold px-3 py-1.5 rounded-xl border border-violet-700/40 text-violet-300 hover:bg-violet-900/30 transition-colors flex items-center gap-1.5">
+            <i data-lucide="sparkles" class="w-3.5 h-3.5 text-amber-400"></i> Try Sample Sound
+          </button>
+        </div>
+
+        <!-- Input Box -->
+        <div class="bg-obsidian/80 p-2 sm:p-3 rounded-2xl border border-violet-800/30 flex flex-col sm:flex-row items-center gap-3 mb-6 shadow-inner">
+          <div class="flex items-center gap-3 w-full px-3 py-2 flex-1">
+            <i data-lucide="music" class="w-5 h-5 text-cyan-400 shrink-0"></i>
+            <input 
+              id="igAudioInput" 
+              type="text" 
+              placeholder="Paste Instagram Reel or Video URL..." 
+              class="w-full bg-transparent border-0 text-white placeholder-slate-500 text-sm focus:outline-none"
+              onkeydown="if(event.key==='Enter') fetchMediaInfo('igAudio')"
+            />
+            <button onclick="pasteClipboardTo('igAudioInput')" class="text-xs font-semibold px-3 py-1.5 rounded-lg bg-violet-900/40 text-violet-300 hover:text-white transition-colors flex items-center gap-1 shrink-0">
+              <i data-lucide="clipboard" class="w-3.5 h-3.5"></i> Paste
+            </button>
+          </div>
+          <button id="igAudioFetchBtn" onclick="fetchMediaInfo('igAudio')" class="glow-btn w-full sm:w-auto px-7 py-3 rounded-xl text-sm font-bold text-white flex items-center justify-center gap-2 shrink-0">
+            <span>Extract Audio</span>
+            <i data-lucide="disc" class="w-4 h-4"></i>
+          </button>
+        </div>
+
+        <!-- Result Container -->
+        <div id="igAudioResult" class="hidden mt-8 transition-all duration-300">
+          <div class="bg-deepPurple/40 p-6 rounded-2xl border border-violet-800/30 flex flex-col gap-6">
+            <div class="flex items-center gap-4">
+              <div class="w-16 h-16 rounded-xl bg-gradient-to-tr from-pink-500 to-cyan-500 p-[2px] shadow-lg">
+                <div class="w-full h-full bg-obsidian rounded-[10px] flex items-center justify-center">
+                  <i data-lucide="music" class="w-7 h-7 text-cyan-400"></i>
+                </div>
+              </div>
+              <div>
+                <h3 id="igAudioTitle" class="text-base font-bold text-white">Instagram Original Sound</h3>
+                <p id="igAudioAuthor" class="text-xs text-slate-400">Extracted from Reel</p>
+              </div>
+            </div>
+
+            <!-- Format Selector -->
+            <div>
+              <label class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2 block">Choose Audio Export Format:</label>
+              <div class="grid grid-cols-3 gap-3">
+                <button onclick="setIgAudioFormat('mp3')" class="ig-fmt-btn active-fmt p-3 rounded-xl border border-cyan-500 bg-cyan-950/40 text-white text-xs font-bold flex items-center justify-center gap-2" data-fmt="mp3">
+                  <i data-lucide="disc" class="w-4 h-4 text-cyan-400"></i> MP3 (Universal)
+                </button>
+                <button onclick="setIgAudioFormat('wav')" class="ig-fmt-btn p-3 rounded-xl border border-violet-800/30 bg-obsidian text-slate-400 hover:text-white text-xs font-bold flex items-center justify-center gap-2" data-fmt="wav">
+                  <i data-lucide="waveform" class="w-4 h-4 text-purple-400"></i> WAV (Studio)
+                </button>
+                <button onclick="setIgAudioFormat('m4a')" class="ig-fmt-btn p-3 rounded-xl border border-violet-800/30 bg-obsidian text-slate-400 hover:text-white text-xs font-bold flex items-center justify-center gap-2" data-fmt="m4a">
+                  <i data-lucide="file-audio" class="w-4 h-4 text-pink-400"></i> M4A (Apple)
+                </button>
+              </div>
+            </div>
+
+            <div class="pt-4 border-t border-violet-900/40 flex flex-col sm:flex-row items-center gap-3">
+              <button id="igAudioDownloadBtn" onclick="executeDownload('igAudio')" class="glow-btn w-full sm:flex-1 py-3.5 rounded-xl text-sm font-bold text-white flex items-center justify-center gap-2">
+                <i data-lucide="download" class="w-4 h-4"></i>
+                <span>Download Audio Track</span>
+              </button>
+              <button onclick="openQrModal('igAudio')" class="w-full sm:w-auto px-4 py-3.5 rounded-xl border border-violet-700/50 hover:bg-violet-900/30 text-slate-300 hover:text-white transition-colors flex items-center justify-center gap-2">
+                <i data-lucide="qr-code" class="w-4 h-4 text-cyan-400"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- EXTRA FEATURE A: UNIVERSAL MEDIA CONVERTER -->
+    <!-- ========================================================================= -->
+    <div id="tab-converter" class="tool-tab-content hidden">
+      <div class="glass-panel p-6 sm:p-10 rounded-3xl relative overflow-hidden">
+        <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-emerald-600/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="flex items-center justify-between mb-8">
+          <div>
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 text-xs font-bold uppercase tracking-wider mb-2">
+              <i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i> Feature A – Universal Media Converter
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-display font-extrabold text-white">Convert Any Video or Audio File</h2>
+            <p class="text-sm text-slate-400 mt-1">Convert MP4 to MP3, MP4 to WAV, WAV to MP3, Video to high-frame-rate GIF, and more.</p>
+          </div>
+        </div>
+
+        <!-- Drag & Drop Zone -->
+        <div 
+          id="dropZone" 
+          onclick="document.getElementById('converterFileInput').click()"
+          class="border-2 border-dashed border-violet-700/50 hover:border-neonCyan rounded-3xl p-10 text-center cursor-pointer transition-colors bg-obsidian/40 flex flex-col items-center justify-center group mb-6"
+        >
+          <input type="file" id="converterFileInput" class="hidden" accept="video/*,audio/*" onchange="handleConverterFileSelected(this.files[0])"/>
+          <div class="w-16 h-16 rounded-2xl bg-violet-900/30 group-hover:bg-cyan-950/40 border border-violet-700/40 flex items-center justify-center text-violet-400 group-hover:text-neonCyan mb-4 transition-all">
+            <i data-lucide="upload-cloud" class="w-8 h-8"></i>
+          </div>
+          <h4 class="text-base font-bold text-white mb-1">Click to Upload or Drag & Drop Media File</h4>
+          <p class="text-xs text-slate-400 max-w-sm">Supports MP4, MOV, WEBM, MKV, AVI, MP3, WAV, AAC, M4A up to 200MB</p>
+          <div id="converterSelectedFileInfo" class="hidden mt-4 inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-950/40 border border-emerald-500/40 text-emerald-300 text-xs font-bold"></div>
+        </div>
+
+        <!-- Conversion Settings Form -->
+        <div id="converterOptions" class="hidden bg-deepPurple/40 p-6 rounded-2xl border border-violet-800/30">
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-6">
+            <div>
+              <label class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2 block">Target Format</label>
+              <select id="converterTargetFormat" class="w-full bg-obsidian border border-violet-800/50 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-neonCyan" onchange="handleConverterFormatChange(this.value)">
+                <option value="mp3">MP3 – Universal Audio (320kbps)</option>
+                <option value="wav">WAV – Lossless Master Audio</option>
+                <option value="gif">GIF – High Definition Animated GIF</option>
+                <option value="mp4">MP4 – Universal H.264 Video</option>
+                <option value="aac">AAC – Apple High Efficiency Audio</option>
+                <option value="m4a">M4A – Clean Audio Container</option>
+              </select>
+            </div>
+
+            <div id="converterFpsBox" class="hidden">
+              <label class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2 block">GIF Frame Rate</label>
+              <select id="converterGifFps" class="w-full bg-obsidian border border-violet-800/50 rounded-xl px-4 py-3 text-sm text-white focus:outline-none">
+                <option value="15">15 FPS (Smooth & Compact)</option>
+                <option value="24">24 FPS (Cinematic Quality)</option>
+                <option value="10">10 FPS (Small File Size)</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2 block">Audio Bitrate</label>
+              <select id="converterBitrate" class="w-full bg-obsidian border border-violet-800/50 rounded-xl px-4 py-3 text-sm text-white focus:outline-none">
+                <option value="320k">320 kbps (Maximum Quality)</option>
+                <option value="256k">256 kbps (High Quality)</option>
+                <option value="192k">192 kbps (Standard)</option>
+                <option value="128k">128 kbps (Compact)</option>
+              </select>
+            </div>
+          </div>
+
+          <button id="converterSubmitBtn" onclick="runUniversalConversion()" class="glow-btn w-full py-3.5 rounded-xl text-sm font-bold text-white flex items-center justify-center gap-2">
+            <i data-lucide="refresh-cw" class="w-4 h-4"></i>
+            <span>Start Conversion Now</span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- EXTRA FEATURE B: VIDEO EDITOR (TRIM, CUT, EXTRACT AUDIO) -->
+    <!-- ========================================================================= -->
+    <div id="tab-editor" class="tool-tab-content hidden">
+      <div class="glass-panel p-6 sm:p-10 rounded-3xl relative overflow-hidden">
+        <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-amber-600/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="flex items-center justify-between mb-8">
+          <div>
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-amber-500/15 border border-amber-500/30 text-amber-400 text-xs font-bold uppercase tracking-wider mb-2">
+              <i data-lucide="scissors" class="w-3.5 h-3.5"></i> Feature B – Video Editor Studio
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-display font-extrabold text-white">Precision Video Trimmer & Audio Extractor</h2>
+            <p class="text-sm text-slate-400 mt-1">Select exact start & end timestamps, cut unwanted portions, preview in real time, and export.</p>
+          </div>
+          <button onclick="loadSampleVideoToEditor()" class="text-xs font-semibold px-3 py-1.5 rounded-xl border border-violet-700/40 text-violet-300 hover:bg-violet-900/30 transition-colors flex items-center gap-1.5">
+            <i data-lucide="film" class="w-3.5 h-3.5 text-amber-400"></i> Load Demo Video
+          </button>
+        </div>
+
+        <!-- Video Player & Trimmer UI -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          <div class="lg:col-span-7 flex flex-col gap-3">
+            <div class="relative rounded-2xl overflow-hidden aspect-video bg-black border border-violet-800/40 shadow-2xl flex items-center justify-center">
+              <video id="editorVideoPlayer" class="w-full h-full object-contain" controls>
+                <source src="/media/sample_video.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="flex items-center justify-between text-xs text-slate-400 px-1">
+              <span>Current Time: <span id="editorCurrentTime" class="text-cyan-400 font-mono">00:00.0</span></span>
+              <span>Video Duration: <span id="editorDuration" class="text-slate-300 font-mono">00:15.0</span></span>
+            </div>
+          </div>
+
+          <!-- Controls & Sliders Column -->
+          <div class="lg:col-span-5 bg-deepPurple/40 p-6 rounded-2xl border border-violet-800/30 flex flex-col gap-5">
+            <div>
+              <span class="text-xs font-bold uppercase tracking-wider text-slate-400 block mb-3">Trimming Range Selection</span>
+              
+              <!-- Start Time Control -->
+              <div class="mb-4">
+                <div class="flex items-center justify-between text-xs mb-1">
+                  <span class="text-slate-300 font-medium">Start Timestamp:</span>
+                  <span id="editorStartTimeVal" class="text-neonCyan font-mono font-bold">0.0s</span>
+                </div>
+                <input id="editorStartSlider" type="range" min="0" max="15" step="0.1" value="0" class="w-full accent-neonCyan cursor-pointer" oninput="updateEditorTrim()"/>
+              </div>
+
+              <!-- End Time Control -->
+              <div class="mb-4">
+                <div class="flex items-center justify-between text-xs mb-1">
+                  <span class="text-slate-300 font-medium">End Timestamp:</span>
+                  <span id="editorEndTimeVal" class="text-neonPink font-mono font-bold">10.0s</span>
+                </div>
+                <input id="editorEndSlider" type="range" min="0" max="15" step="0.1" value="10" class="w-full accent-neonPink cursor-pointer" oninput="updateEditorTrim()"/>
+              </div>
+
+              <div class="p-3 rounded-xl bg-obsidian/70 border border-violet-900/40 text-xs text-slate-300 flex items-center justify-between">
+                <span>Selected Duration:</span>
+                <span id="editorSelectedDuration" class="font-bold text-emerald-400 font-mono">10.0 seconds</span>
+              </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex flex-col gap-2.5 pt-2">
+              <button onclick="previewTrimmedSection()" class="px-4 py-2.5 rounded-xl border border-violet-700 hover:bg-violet-900/40 text-xs font-bold text-white flex items-center justify-center gap-2">
+                <i data-lucide="play-circle" class="w-4 h-4 text-cyan-400"></i>
+                <span>Preview Selection</span>
+              </button>
+
+              <button onclick="exportTrimmedVideo(false)" class="glow-btn py-3.5 rounded-xl text-xs font-bold text-white flex items-center justify-center gap-2">
+                <i data-lucide="scissors" class="w-4 h-4"></i>
+                <span>Export Trimmed Video (MP4)</span>
+              </button>
+
+              <button onclick="exportTrimmedVideo(true)" class="py-2.5 rounded-xl border border-purple-600/40 hover:bg-purple-950/40 text-xs font-bold text-purple-300 flex items-center justify-center gap-2">
+                <i data-lucide="music" class="w-4 h-4 text-pink-400"></i>
+                <span>Extract Trimmed Audio Only (MP3)</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- EXTRA FEATURE C: AUDIO STUDIO (PLAYER, SPEED, VOLUME, CONVERSION) -->
+    <!-- ========================================================================= -->
+    <div id="tab-audio-studio" class="tool-tab-content hidden">
+      <div class="glass-panel p-6 sm:p-10 rounded-3xl relative overflow-hidden">
+        <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-indigo-600/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="flex items-center justify-between mb-8">
+          <div>
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-indigo-500/15 border border-indigo-500/30 text-indigo-400 text-xs font-bold uppercase tracking-wider mb-2">
+              <i data-lucide="sliders" class="w-3.5 h-3.5"></i> Feature C – Audio Studio
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-display font-extrabold text-white">Full-Featured Web Audio Studio</h2>
+            <p class="text-sm text-slate-400 mt-1">Multi-speed playback, volume boost, frequency visualizer, and custom audio export.</p>
+          </div>
+        </div>
+
+        <div class="bg-deepPurple/40 p-6 sm:p-8 rounded-2xl border border-violet-800/30 flex flex-col gap-6">
+          
+          <!-- Live Studio Frequency Spectrum Canvas -->
+          <div class="relative w-full h-28 rounded-2xl bg-obsidian/90 border border-violet-900/50 p-2 overflow-hidden flex items-end">
+            <canvas id="studioSpectrumCanvas" class="w-full h-full"></canvas>
+            <div class="absolute top-2 left-3 flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-neonCyan animate-ping"></span>
+              <span class="text-[11px] font-mono text-cyan-300">REALTIME SPECTRUM 44.1kHz</span>
+            </div>
+          </div>
+
+          <!-- Playback Controls -->
+          <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+              <button id="studioPlayBtn" onclick="toggleStudioAudio()" class="w-12 h-12 rounded-full bg-gradient-to-tr from-neonViolet to-neonCyan text-white flex items-center justify-center shadow-lg shadow-violet-900/50 hover:scale-105 transition-transform">
+                <i id="studioPlayIcon" data-lucide="play" class="w-5 h-5 fill-white ml-0.5"></i>
+              </button>
+              <div>
+                <div class="text-sm font-bold text-white">GSK Master Audio Track</div>
+                <div class="text-xs text-slate-400">Synthesizer & Audio Engine</div>
+              </div>
+            </div>
+
+            <!-- Speed Pills -->
+            <div class="flex items-center gap-1.5 bg-obsidian/80 p-1 rounded-xl border border-violet-900/40">
+              <span class="text-[10px] font-bold text-slate-400 px-2">SPEED:</span>
+              <button onclick="setStudioSpeed(0.5)" class="studio-spd-btn px-2.5 py-1 rounded-lg text-xs font-bold text-slate-400 hover:text-white" data-spd="0.5">0.5x</button>
+              <button onclick="setStudioSpeed(1.0)" class="studio-spd-btn active-spd px-2.5 py-1 rounded-lg text-xs font-bold bg-violet-600 text-white" data-spd="1.0">1.0x</button>
+              <button onclick="setStudioSpeed(1.25)" class="studio-spd-btn px-2.5 py-1 rounded-lg text-xs font-bold text-slate-400 hover:text-white" data-spd="1.25">1.25x</button>
+              <button onclick="setStudioSpeed(1.5)" class="studio-spd-btn px-2.5 py-1 rounded-lg text-xs font-bold text-slate-400 hover:text-white" data-spd="1.5">1.5x</button>
+              <button onclick="setStudioSpeed(2.0)" class="studio-spd-btn px-2.5 py-1 rounded-lg text-xs font-bold text-slate-400 hover:text-white" data-spd="2.0">2.0x</button>
+            </div>
+
+            <!-- Volume Slider -->
+            <div class="flex items-center gap-2">
+              <i data-lucide="volume-2" class="w-4 h-4 text-cyan-400"></i>
+              <input id="studioVolumeSlider" type="range" min="0" max="1" step="0.05" value="0.9" class="w-24 accent-neonCyan cursor-pointer" oninput="setStudioVolume(this.value)"/>
+            </div>
+          </div>
+
+          <!-- Studio Export Button -->
+          <div class="pt-4 border-t border-violet-900/40 flex items-center justify-between">
+            <span class="text-xs text-slate-400">Export audio track with applied speed and volume parameters</span>
+            <button onclick="exportStudioAudio()" class="glow-btn px-6 py-2.5 rounded-xl text-xs font-bold text-white flex items-center gap-2">
+              <i data-lucide="download" class="w-4 h-4"></i>
+              <span>Export Studio Audio (MP3)</span>
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ========================================================================= -->
+  <!-- 4. RECENTLY PROCESSED / DOWNLOAD HISTORY (PERSISTENT LOCALSTORAGE) -->
+  <!-- ========================================================================= -->
+  <section id="historySection" class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+    <div class="glass-panel p-6 sm:p-10 rounded-3xl">
+      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
         <div>
-          <h4 class="text-2xl font-bold font-heading text-white">Thank You! Your Interest Has Been Successfully Submitted.</h4>
-          <p class="text-slate-300 text-sm mt-1">Our Team Will Contact You Soon.</p>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-amber-500/15 border border-amber-500/30 text-amber-400 text-xs font-bold uppercase tracking-wider mb-2">
+            <i data-lucide="history" class="w-3.5 h-3.5"></i> Tool Feature D – Download History
+          </div>
+          <h3 class="text-xl sm:text-2xl font-display font-bold text-white">Recently Processed Media Files</h3>
+          <p class="text-xs text-slate-400">Stored locally in your browser. Never uploaded to third-party databases.</p>
         </div>
-        <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 text-xs text-slate-400 max-w-md mx-auto">
-          Reference Code: <span id="success-ref-code" class="text-cyan-400 font-mono font-bold text-sm">PV-2026-XXXX</span>
-          <p class="mt-1">Keep this reference code for your viva schedule and discount tracking.</p>
-        </div>
-        <div class="flex flex-col sm:flex-row gap-3 justify-center pt-2">
-          <a id="success-wa-btn" href="#" target="_blank" class="px-5 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs flex items-center justify-center gap-2 transition">
-            <i data-lucide="message-circle" class="w-4 h-4"></i> Chat on WhatsApp Instantly
-          </a>
-          <button onclick="app.closeInterestModal()" class="px-5 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold transition">
-            Close & Continue Browsing
+
+        <div class="flex items-center gap-3">
+          <button onclick="clearHistory()" class="px-4 py-2 rounded-xl border border-red-800/40 text-red-400 hover:bg-red-950/40 hover:border-red-600 text-xs font-bold transition-all flex items-center gap-1.5">
+            <i data-lucide="trash-2" class="w-3.5 h-3.5"></i> Clear History
           </button>
         </div>
       </div>
 
-    </div>
-  </div>
+      <!-- History Table / Container -->
+      <div class="overflow-x-auto">
+        <table class="w-full text-left text-xs">
+          <thead class="bg-obsidian/70 text-slate-400 uppercase tracking-wider border-b border-violet-900/40">
+            <tr>
+              <th class="py-3 px-4">Media File & Platform</th>
+              <th class="py-3 px-4">Format</th>
+              <th class="py-3 px-4">File Size</th>
+              <th class="py-3 px-4">Processed Date</th>
+              <th class="py-3 px-4 text-right">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="historyTableBody" class="divide-y divide-violet-950/40 text-slate-300">
+            <!-- Dynamically populated or empty state -->
+          </tbody>
+        </table>
+      </div>
 
-  <!-- Poster Showcase Modal -->
-  <div id="modal-poster" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/85 backdrop-blur-md overflow-y-auto">
-    <div class="relative w-full max-w-3xl bg-[#090d16] border border-amber-500/30 rounded-2xl shadow-2xl p-6 my-8">
-      <button onclick="app.closePosterModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white p-2 rounded-lg bg-slate-800/80">
-        <i data-lucide="x" class="w-5 h-5"></i>
+      <div id="historyEmptyState" class="hidden py-12 text-center flex flex-col items-center justify-center">
+        <i data-lucide="inbox" class="w-10 h-10 text-slate-600 mb-2"></i>
+        <p class="text-sm text-slate-400 font-medium">No files in your download history yet.</p>
+        <p class="text-xs text-slate-600">Your processed videos and audio tracks will automatically appear here.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- 5. WHY CHOOSE GSK MEDIAVERSE SECTION -->
+  <!-- ========================================================================= -->
+  <section class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
+    <div class="text-center max-w-3xl mx-auto mb-14">
+      <h2 class="text-3xl sm:text-4xl font-display font-extrabold text-white mb-4">
+        Why Creators Choose <span class="gradient-text">GSK MEDIAVERSE</span>
+      </h2>
+      <p class="text-sm sm:text-base text-slate-400">
+        Engineered with cutting-edge media processing pipelines, zero ad clutter, and studio-grade audio synthesis.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Card 1 -->
+      <div class="glass-panel p-6 rounded-2xl flex flex-col gap-3 group hover:border-violet-500/50 transition-all">
+        <div class="w-12 h-12 rounded-xl bg-violet-600/20 border border-violet-500/30 flex items-center justify-center text-neonViolet group-hover:scale-110 transition-transform">
+          <i data-lucide="zap" class="w-6 h-6"></i>
+        </div>
+        <h3 class="text-lg font-bold text-white">Ultra-High Speed Processing</h3>
+        <p class="text-xs text-slate-400 leading-relaxed">
+          Concurrent multi-threaded stream pipelines deliver instantaneous metadata resolution and rapid media fetching without artificial delays.
+        </p>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="glass-panel p-6 rounded-2xl flex flex-col gap-3 group hover:border-cyan-500/50 transition-all">
+        <div class="w-12 h-12 rounded-xl bg-cyan-600/20 border border-cyan-500/30 flex items-center justify-center text-neonCyan group-hover:scale-110 transition-transform">
+          <i data-lucide="award" class="w-6 h-6"></i>
+        </div>
+        <h3 class="text-lg font-bold text-white">Lossless Studio Fidelity</h3>
+        <p class="text-xs text-slate-400 leading-relaxed">
+          Preserve pure audio fidelity up to 320kbps MP3 and uncompressed 44.1kHz master WAV formats, engineered for audiophiles and producers.
+        </p>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="glass-panel p-6 rounded-2xl flex flex-col gap-3 group hover:border-pink-500/50 transition-all">
+        <div class="w-12 h-12 rounded-xl bg-pink-600/20 border border-pink-500/30 flex items-center justify-center text-neonPink group-hover:scale-110 transition-transform">
+          <i data-lucide="shield-check" class="w-6 h-6"></i>
+        </div>
+        <h3 class="text-lg font-bold text-white">Bank-Grade Privacy & Safety</h3>
+        <p class="text-xs text-slate-400 leading-relaxed">
+          Your links and files are never stored permanently. Automatic ephemeral storage cleans files after 15 minutes to guarantee absolute privacy.
+        </p>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="glass-panel p-6 rounded-2xl flex flex-col gap-3 group hover:border-emerald-500/50 transition-all">
+        <div class="w-12 h-12 rounded-xl bg-emerald-600/20 border border-emerald-500/30 flex items-center justify-center text-emerald-400 group-hover:scale-110 transition-transform">
+          <i data-lucide="smartphone" class="w-6 h-6"></i>
+        </div>
+        <h3 class="text-lg font-bold text-white">Flawless Mobile & Gallery Support</h3>
+        <p class="text-xs text-slate-400 leading-relaxed">
+          Optimized for Android, iPhone, iPad, and desktop. Clear instructions guide you to effortlessly save media straight into your Camera Roll or Gallery.
+        </p>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="glass-panel p-6 rounded-2xl flex flex-col gap-3 group hover:border-amber-500/50 transition-all">
+        <div class="w-12 h-12 rounded-xl bg-amber-600/20 border border-amber-500/30 flex items-center justify-center text-amber-400 group-hover:scale-110 transition-transform">
+          <i data-lucide="scissors" class="w-6 h-6"></i>
+        </div>
+        <h3 class="text-lg font-bold text-white">Integrated Video Trimmer & Studio</h3>
+        <p class="text-xs text-slate-400 leading-relaxed">
+          No external software needed. Trim unwanted clips, adjust playback speed, boost volume, or convert into animated GIFs directly in your browser.
+        </p>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="glass-panel p-6 rounded-2xl flex flex-col gap-3 group hover:border-indigo-500/50 transition-all">
+        <div class="w-12 h-12 rounded-xl bg-indigo-600/20 border border-indigo-500/30 flex items-center justify-center text-indigo-400 group-hover:scale-110 transition-transform">
+          <i data-lucide="heart" class="w-6 h-6"></i>
+        </div>
+        <h3 class="text-lg font-bold text-white">Always 100% Free & Unlimited</h3>
+        <p class="text-xs text-slate-400 leading-relaxed">
+          Zero paywalls, zero shady redirect popups, and no monthly quotas. Pure high-performance media utilities available anytime.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- 6. FREQUENTLY ASKED QUESTIONS (ACCORDION) -->
+  <!-- ========================================================================= -->
+  <section class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-display font-extrabold text-white mb-3">Frequently Asked Questions</h2>
+      <p class="text-sm text-slate-400">Everything you need to know about using GSK MEDIAVERSE.</p>
+    </div>
+
+    <div class="flex flex-col gap-3.5" id="faqAccordion">
+      <!-- FAQ 1 -->
+      <div class="glass-panel rounded-2xl overflow-hidden border border-violet-800/30">
+        <button onclick="toggleFaq(1)" class="w-full p-5 text-left flex items-center justify-between font-semibold text-sm text-white hover:text-neonCyan transition-colors">
+          <span>How do I save downloaded videos to my iPhone Photos or Android Gallery?</span>
+          <i id="faqIcon-1" data-lucide="chevron-down" class="w-4 h-4 text-violet-400 transition-transform"></i>
+        </button>
+        <div id="faqContent-1" class="hidden px-5 pb-5 text-xs text-slate-400 leading-relaxed">
+          On <strong>iPhone / iOS</strong>: When the download completes, tap the blue Download icon in Safari's address bar, tap the file, click the Share icon (box with upward arrow), and select <strong>"Save Video"</strong>. It will immediately appear in your Apple Photos app.<br><br>
+          On <strong>Android</strong>: Downloaded files are saved automatically into your <code>Downloads</code> directory and are recognized by Google Photos, Samsung Gallery, or your preferred gallery viewer.
+        </div>
+      </div>
+
+      <!-- FAQ 2 -->
+      <div class="glass-panel rounded-2xl overflow-hidden border border-violet-800/30">
+        <button onclick="toggleFaq(2)" class="w-full p-5 text-left flex items-center justify-between font-semibold text-sm text-white hover:text-neonCyan transition-colors">
+          <span>Is GSK MEDIAVERSE free to use?</span>
+          <i id="faqIcon-2" data-lucide="chevron-down" class="w-4 h-4 text-violet-400 transition-transform"></i>
+        </button>
+        <div id="faqContent-2" class="hidden px-5 pb-5 text-xs text-slate-400 leading-relaxed">
+          Yes! GSK MEDIAVERSE is 100% free with no subscription, no hidden charges, and zero popup ads.
+        </div>
+      </div>
+
+      <!-- FAQ 3 -->
+      <div class="glass-panel rounded-2xl overflow-hidden border border-violet-800/30">
+        <button onclick="toggleFaq(3)" class="w-full p-5 text-left flex items-center justify-between font-semibold text-sm text-white hover:text-neonCyan transition-colors">
+          <span>What formats and resolutions are supported?</span>
+          <i id="faqIcon-3" data-lucide="chevron-down" class="w-4 h-4 text-violet-400 transition-transform"></i>
+        </button>
+        <div id="faqContent-3" class="hidden px-5 pb-5 text-xs text-slate-400 leading-relaxed">
+          Video resolutions include 1080p Full HD, 720p HD, 480p, 360p, 240p, and 144p in MP4 and WEBM. Audio formats include MP3 (up to 320kbps), WAV (lossless 16-bit PCM), AAC, and M4A. You can also convert videos to animated GIFs!
+        </div>
+      </div>
+
+      <!-- FAQ 4 -->
+      <div class="glass-panel rounded-2xl overflow-hidden border border-violet-800/30">
+        <button onclick="toggleFaq(4)" class="w-full p-5 text-left flex items-center justify-between font-semibold text-sm text-white hover:text-neonCyan transition-colors">
+          <span>Can I download private Instagram accounts or age-restricted videos?</span>
+          <i id="faqIcon-4" data-lucide="chevron-down" class="w-4 h-4 text-violet-400 transition-transform"></i>
+        </button>
+        <div id="faqContent-4" class="hidden px-5 pb-5 text-xs text-slate-400 leading-relaxed">
+          No. GSK MEDIAVERSE strictly respects platform terms, copyright, and user privacy. Only publicly accessible or authorized content is processed. Private profiles and DRM-gated content cannot and should not be accessed without permission.
+        </div>
+      </div>
+
+      <!-- FAQ 5 -->
+      <div class="glass-panel rounded-2xl overflow-hidden border border-violet-800/30">
+        <button onclick="toggleFaq(5)" class="w-full p-5 text-left flex items-center justify-between font-semibold text-sm text-white hover:text-neonCyan transition-colors">
+          <span>Are my uploaded files or downloaded links stored on your server?</span>
+          <i id="faqIcon-5" data-lucide="chevron-down" class="w-4 h-4 text-violet-400 transition-transform"></i>
+        </button>
+        <div id="faqContent-5" class="hidden px-5 pb-5 text-xs text-slate-400 leading-relaxed">
+          Never. Temporary files are stored in an isolated, encrypted temporary folder and automatically purged after 15 to 30 minutes. Your download history is stored exclusively inside your local browser via <code>localStorage</code>.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- 7. QR CODE & DEVICE SHARE MODAL -->
+  <!-- ========================================================================= -->
+  <div id="qrModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md hidden transition-opacity">
+    <div class="glass-panel p-6 sm:p-8 rounded-3xl max-w-sm w-full border border-violet-500/40 relative flex flex-col items-center text-center">
+      <button onclick="closeQrModal()" class="absolute top-4 right-4 p-2 rounded-xl text-slate-400 hover:text-white bg-violet-950/40">
+        <i data-lucide="x" class="w-4 h-4"></i>
       </button>
-      <div class="text-center mb-4">
-        <span class="text-xs font-bold text-amber-400 uppercase tracking-widest">Official Branding & Brochure</span>
-        <h3 class="text-xl font-bold font-heading text-white">PROJECTVERSE – Your Final Year Project Partner!</h3>
-      </div>
-      <div class="flex justify-center bg-black/40 rounded-xl p-2 border border-slate-800 max-h-[75vh] overflow-auto">
-        <img src="/uploads/poster.jpg" alt="PROJECTVERSE Official Poster" class="rounded-lg shadow-2xl max-w-full h-auto object-contain">
-      </div>
-      <div class="mt-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-400">
-        <span>Hotline & WhatsApp: <strong class="text-white">7989010109</strong></span>
-        <div class="flex gap-2">
-          <a href="/uploads/poster.jpg" download="ProjectVerse_Official_Poster.jpg" class="px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold flex items-center gap-1.5 transition">
-            <i data-lucide="download" class="w-3.5 h-3.5"></i> Download Poster
-          </a>
-          <button onclick="app.openInterestModal(); app.closePosterModal();" class="px-4 py-2 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold transition">
-            Enquire for Your Project
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
 
-  <!-- Demo Video Modal -->
-  <div id="modal-demo" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/85 backdrop-blur-md">
-    <div class="relative w-full max-w-4xl bg-[#090d16] border border-cyan-500/30 rounded-2xl shadow-2xl p-6">
-      <button onclick="app.closeDemoModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white p-2 rounded-lg bg-slate-800/80">
-        <i data-lucide="x" class="w-5 h-5"></i>
-      </button>
-      <h3 id="modal-demo-title" class="text-lg font-bold font-heading text-white mb-4 pr-12">Project Live Demonstration</h3>
-      <div class="relative w-full aspect-video rounded-xl overflow-hidden bg-black border border-slate-800">
-        <iframe id="modal-demo-iframe" class="w-full h-full" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <div class="w-12 h-12 rounded-2xl bg-cyan-600/20 text-neonCyan flex items-center justify-center mb-4">
+        <i data-lucide="qr-code" class="w-6 h-6"></i>
       </div>
-      <div class="mt-4 flex justify-between items-center text-xs text-slate-400">
-        <span>Need custom code walkthrough or 1-on-1 viva session?</span>
-        <button onclick="app.openInterestModal(); app.closeDemoModal();" class="px-4 py-2 rounded-lg bg-cyan-500 text-slate-950 font-bold hover:bg-cyan-400 transition">
-          I'm Interested in This Project
+
+      <h3 class="text-lg font-bold text-white mb-1">Scan & Share Media</h3>
+      <p class="text-xs text-slate-400 mb-6">Scan with your mobile camera to instantly open and save this file on your phone.</p>
+
+      <!-- QR Code Container -->
+      <div id="qrCanvasContainer" class="p-4 bg-white rounded-2xl shadow-2xl mb-6"></div>
+
+      <div class="flex flex-col gap-2.5 w-full">
+        <button onclick="copyShareLink()" class="glow-btn py-2.5 rounded-xl text-xs font-bold text-white flex items-center justify-center gap-2">
+          <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+          <span id="copyLinkBtnText">Copy Direct Link</span>
+        </button>
+        <button onclick="triggerNativeShare()" class="py-2.5 rounded-xl border border-violet-700/40 text-violet-300 hover:text-white text-xs font-bold flex items-center justify-center gap-2">
+          <i data-lucide="share-2" class="w-3.5 h-3.5 text-cyan-400"></i>
+          <span>Share via Device</span>
         </button>
       </div>
     </div>
   </div>
 
-  <!-- Student Auth Modal (Login / Register) -->
-  <div id="modal-student-auth" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
-    <div class="relative w-full max-w-md bg-[#090d16] border border-cyan-500/30 rounded-2xl shadow-2xl p-6 sm:p-8">
-      <button onclick="app.closeStudentAuthModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white p-2 rounded-lg bg-slate-800/50">
-        <i data-lucide="x" class="w-5 h-5"></i>
+  <!-- ========================================================================= -->
+  <!-- 8. ANIMATED SUCCESS MODAL -->
+  <!-- ========================================================================= -->
+  <div id="successModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md hidden transition-opacity">
+    <div class="glass-panel p-6 sm:p-8 rounded-3xl max-w-md w-full border border-emerald-500/40 relative flex flex-col items-center text-center">
+      <button onclick="closeSuccessModal()" class="absolute top-4 right-4 p-2 rounded-xl text-slate-400 hover:text-white bg-violet-950/40">
+        <i data-lucide="x" class="w-4 h-4"></i>
       </button>
 
-      <div class="flex gap-4 border-b border-slate-800 pb-3 mb-6">
-        <button id="auth-tab-login" onclick="app.switchStudentAuthTab('login')" class="font-bold text-sm text-cyan-400 border-b-2 border-cyan-400 pb-1">
-          Student Login
-        </button>
-        <button id="auth-tab-register" onclick="app.switchStudentAuthTab('register')" class="font-bold text-sm text-slate-400 hover:text-slate-200 pb-1">
-          New Student Register
-        </button>
+      <div class="w-16 h-16 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mb-4 border border-emerald-500/30">
+        <i data-lucide="check" class="w-8 h-8"></i>
       </div>
 
-      <!-- Login Form -->
-      <form id="student-login-form" onsubmit="app.handleStudentLogin(event)" class="space-y-4">
-        <div>
-          <label class="block text-xs font-semibold text-slate-300 mb-1">Email Address</label>
-          <input type="email" id="login-email" required placeholder="student@demo.com" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm focus:outline-none focus:border-cyan-400">
-        </div>
-        <div>
-          <label class="block text-xs font-semibold text-slate-300 mb-1">Password</label>
-          <input type="password" id="login-password" required placeholder="••••••••" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm focus:outline-none focus:border-cyan-400">
-        </div>
-        <p class="text-[11px] text-slate-400">Demo student account: <span class="text-cyan-300 font-mono">student@demo.com</span> / <span class="text-cyan-300 font-mono">student123</span></p>
-        <button type="submit" class="w-full py-3 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-sm shadow-lg shadow-cyan-500/20 transition">
-          Sign In to Dashboard
-        </button>
-      </form>
+      <h3 class="text-xl font-bold text-white mb-1">Download Prepared Successfully!</h3>
+      <p id="successFileName" class="text-xs text-emerald-300 font-mono mb-4 break-all"></p>
 
-      <!-- Register Form -->
-      <form id="student-register-form" onsubmit="app.handleStudentRegister(event)" class="space-y-3 hidden">
-        <div>
-          <label class="block text-xs font-semibold text-slate-300 mb-1">Full Name *</label>
-          <input type="text" id="reg-name" required placeholder="Kiran Kumar" class="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm">
-        </div>
-        <div class="grid grid-cols-2 gap-2">
-          <div>
-            <label class="block text-xs font-semibold text-slate-300 mb-1">Email *</label>
-            <input type="email" id="reg-email" required placeholder="name@domain.com" class="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm">
-          </div>
-          <div>
-            <label class="block text-xs font-semibold text-slate-300 mb-1">Mobile *</label>
-            <input type="tel" id="reg-phone" required placeholder="9876543210" class="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm">
-          </div>
-        </div>
-        <div>
-          <label class="block text-xs font-semibold text-slate-300 mb-1">College Name *</label>
-          <input type="text" id="reg-college" required placeholder="JNTU / Osmania" class="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm">
-        </div>
-        <div class="grid grid-cols-2 gap-2">
-          <div>
-            <label class="block text-xs font-semibold text-slate-300 mb-1">Course</label>
-            <select id="reg-course" class="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm">
-              <option value="B.Tech">B.Tech</option>
-              <option value="M.Tech">M.Tech</option>
-              <option value="MCA">MCA</option>
-              <option value="BCA">BCA</option>
-              <option value="B.Sc">B.Sc</option>
-            </select>
-          </div>
-          <div>
-            <label class="block text-xs font-semibold text-slate-300 mb-1">City</label>
-            <input type="text" id="reg-city" placeholder="Hyderabad" class="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm">
-          </div>
-        </div>
-        <div>
-          <label class="block text-xs font-semibold text-slate-300 mb-1">Password *</label>
-          <input type="password" id="reg-password" required placeholder="••••••••" class="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm">
-        </div>
-        <button type="submit" class="w-full py-3 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-sm shadow-lg shadow-cyan-500/20 transition">
-          Create Account & Access Projects
-        </button>
-      </form>
+      <!-- Live Video & Audio Preview Player -->
+      <div id="successMediaPreviewContainer" class="w-full mb-4 rounded-xl overflow-hidden bg-black border border-violet-800/40 shadow-inner">
+        <video id="successVideoPreview" controls playsinline class="w-full max-h-56 object-contain"></video>
+        <audio id="successAudioPreview" controls class="w-full p-2 hidden"></audio>
+      </div>
 
+      <div class="w-full p-4 rounded-2xl bg-obsidian/80 border border-violet-900/40 mb-6 text-left flex flex-col gap-2 text-xs">
+        <div class="flex justify-between text-slate-400">
+          <span>Format:</span>
+          <span id="successFormat" class="font-bold text-white uppercase">MP4 Video</span>
+        </div>
+        <div class="flex justify-between text-slate-400">
+          <span>File Size:</span>
+          <span id="successFileSize" class="font-bold text-cyan-400">14.2 MB</span>
+        </div>
+        <div class="flex justify-between text-slate-400">
+          <span>Gallery Tip:</span>
+          <span class="text-slate-300">Tap browser download to save directly to Photos</span>
+        </div>
+      </div>
+
+      <div class="flex gap-3 w-full">
+        <button id="successDirectDownloadBtn" class="glow-btn flex-1 py-3 rounded-xl text-xs font-bold text-white flex items-center justify-center gap-2">
+          <i data-lucide="download" class="w-4 h-4"></i>
+          <span>Save File Now</span>
+        </button>
+        <button onclick="closeSuccessModal()" class="px-5 py-3 rounded-xl border border-violet-800/40 text-slate-300 hover:text-white text-xs font-bold">
+          Done
+        </button>
+      </div>
     </div>
   </div>
 
-  <!-- Toast Notification Center -->
-  <div id="toast-container" class="fixed top-24 right-6 z-50 flex flex-col gap-2 max-w-sm pointer-events-none"></div>
+  <!-- ========================================================================= -->
+  <!-- 9. PROFESSIONAL FOOTER -->
+  <!-- ========================================================================= -->
+  <footer class="relative z-10 border-t border-violet-950/50 bg-obsidian/90 pt-16 pb-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-12">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <!-- Brand column -->
+        <div class="md:col-span-2 flex flex-col gap-4">
+          <div class="flex items-center gap-2.5">
+            <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-neonViolet to-neonCyan flex items-center justify-center text-white">
+              <i data-lucide="play" class="w-4 h-4 fill-white"></i>
+            </div>
+            <span class="font-display font-extrabold text-xl tracking-wider text-white">GSK</span>
+            <span class="font-display font-extrabold text-xl tracking-wider gradient-text">MEDIAVERSE</span>
+          </div>
+          <p class="text-xs text-slate-400 max-w-md leading-relaxed">
+            GSK MEDIAVERSE is an all-in-one media studio providing video downloading, audio conversion, precision trimming, and format transcoding. Engineered for creators, audiophiles, and everyday media lovers.
+          </p>
+          <div class="text-[11px] text-slate-500 font-mono">
+            Brand Identity: <strong>GSK MEDIAVERSE – One Platform. Endless Media Possibilities.</strong>
+          </div>
+        </div>
 
-  <!-- Application Logic -->
+        <!-- Tools Links -->
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-white mb-4">Studio Tools</h4>
+          <ul class="flex flex-col gap-2.5 text-xs text-slate-400">
+            <li><a href="javascript:switchTab('youtube-video')" class="hover:text-neonCyan transition-colors">YouTube Video Downloader (1080p)</a></li>
+            <li><a href="javascript:switchTab('youtube-audio')" class="hover:text-neonCyan transition-colors">YouTube Audio Converter (320k)</a></li>
+            <li><a href="javascript:switchTab('instagram-video')" class="hover:text-neonCyan transition-colors">Instagram Reel Downloader</a></li>
+            <li><a href="javascript:switchTab('instagram-audio')" class="hover:text-neonCyan transition-colors">Instagram Audio Extractor</a></li>
+            <li><a href="javascript:switchTab('converter')" class="hover:text-neonCyan transition-colors">Universal Media Converter</a></li>
+            <li><a href="javascript:switchTab('editor')" class="hover:text-neonCyan transition-colors">Precision Video Editor</a></li>
+          </ul>
+        </div>
+
+        <!-- Compliance & Legal -->
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-white mb-4">Legal & Terms</h4>
+          <ul class="flex flex-col gap-2.5 text-xs text-slate-400">
+            <li><span class="text-slate-500">Fair Use & Public Access Policy</span></li>
+            <li><span class="text-slate-500">Respect Copyright & Creator Rights</span></li>
+            <li><span class="text-slate-500">No DRM Bypass Guarantee</span></li>
+            <li><span class="text-slate-500">Zero Log Ephemeral Storage</span></li>
+            <li><span class="text-slate-500">API Status: <span class="text-emerald-400 font-bold">Operational (100%)</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pt-8 border-t border-violet-950/40 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+        <p>© 2026 GSK MEDIAVERSE Studio. All Rights Reserved. Engineered with passion by Saikiran Gorle (GSK).</p>
+        <div class="flex items-center gap-4 text-slate-400">
+          <span>FastAPI</span>
+          <span>•</span>
+          <span>Node 24</span>
+          <span>•</span>
+          <span>FFmpeg</span>
+          <span>•</span>
+          <span>Tailwind</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================================================= -->
+  <!-- MAIN APPLICATION JAVASCRIPT ENGINE -->
+  <!-- ========================================================================= -->
   <script src="/js/app.js"></script>
 </body>
 </html>

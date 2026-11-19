@@ -1,7 +1,28 @@
+# Dependencies
 node_modules/
-.DS_Store
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+
+# Temp storage
+temp_storage/
+backend/temp_storage/
+*.tmp
+*.mp4
+*.mp3
+*.wav
+*.gif
+
+# Logs
 *.log
-test_results.txt
-db_log.txt
-out.txt
+npm-debug.log*
+
+# Environment
 .env
+.DS_Store
+Thumbs.db
